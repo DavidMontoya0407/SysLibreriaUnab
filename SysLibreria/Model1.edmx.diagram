@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="94746743b0b241e28dde2a4fb3eadb86" Name="Diagram1">
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Categoria" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Cliente" Width="1.5" PointX="6.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Compra" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.DetalleCompra" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.DetalleVenta" Width="1.5" PointX="11.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Producto" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Proveedor" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Rol" Width="1.5" PointX="1.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Usuario" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIBRERIAModel.Venta" Width="1.5" PointX="9" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_Venta_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_Compra_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_Compra_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_DetalleCompra_Compra" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_DetalleCompra_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_DetalleVenta_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_DetalleVenta_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_Producto_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_Usuario_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIBRERIAModel.FK_Venta_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
