@@ -56,6 +56,7 @@ namespace SysLibreria
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             try { 
             if (validar(true))
             {

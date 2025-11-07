@@ -36,9 +36,11 @@
             // Gp_Menu
             // 
             this.Gp_Menu.Controls.Add(this.CB_MENU);
-            this.Gp_Menu.Location = new System.Drawing.Point(5, 5);
+            this.Gp_Menu.Location = new System.Drawing.Point(7, 6);
+            this.Gp_Menu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Gp_Menu.Name = "Gp_Menu";
-            this.Gp_Menu.Size = new System.Drawing.Size(784, 44);
+            this.Gp_Menu.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gp_Menu.Size = new System.Drawing.Size(1045, 54);
             this.Gp_Menu.TabIndex = 0;
             this.Gp_Menu.TabStop = false;
             this.Gp_Menu.Text = "Menú";
@@ -49,10 +51,12 @@
             this.CB_MENU.FormattingEnabled = true;
             this.CB_MENU.Items.AddRange(new object[] {
             "ROLES",
-            "USUARIOS"});
-            this.CB_MENU.Location = new System.Drawing.Point(47, 14);
+            "USUARIOS",
+            "CLIENTES"});
+            this.CB_MENU.Location = new System.Drawing.Point(63, 17);
+            this.CB_MENU.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CB_MENU.Name = "CB_MENU";
-            this.CB_MENU.Size = new System.Drawing.Size(126, 21);
+            this.CB_MENU.Size = new System.Drawing.Size(167, 24);
             this.CB_MENU.TabIndex = 0;
             this.CB_MENU.Text = "--Control de personal--";
             this.CB_MENU.UseWaitCursor = true;
@@ -60,13 +64,15 @@
             // 
             // Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.Gp_Menu);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Principal";
             this.Text = "Principal";
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.Gp_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
 

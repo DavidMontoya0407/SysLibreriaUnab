@@ -13,7 +13,9 @@ namespace SysLibreria
     public partial class Principal : Form
     {
         List<Usuario> listaUsuario = new List<Usuario>();
-      
+        public static int IdUsuarioLogueado;
+        public static string NombreUsuario;
+
         public Principal()
         {
             InitializeComponent();
@@ -24,6 +26,19 @@ namespace SysLibreria
             InitializeComponent();
 
         }
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            CB_MENU.Items.Clear();
+
+           
+            CB_MENU.Items.Add("ROLES");
+            CB_MENU.Items.Add("USUARIOS");
+            CB_MENU.Items.Add("CLIENTES");
+            CB_MENU.Items.Add("VENTAS");
+
+            CB_MENU.SelectedIndex = -1; 
+        }
+
 
         private void CB_MENU_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -39,9 +54,21 @@ namespace SysLibreria
                     formRol.ShowDialog(this);
                     break;
 
+                case "CLIENTES":
+                    FrmClientes frmClientes = new FrmClientes();
+                    frmClientes.ShowDialog(this);
+                    break;
+
+                case "VENTAS":
+                    FrmVentas frmVentas = new FrmVentas();
+                    frmVentas.StartPosition = FormStartPosition.CenterScreen;
+                    frmVentas.ShowDialog(this);
+                    break;
+
                 default:
                     break;
             }
         }
     }
 }
+

@@ -356,5 +356,15 @@ namespace SysLibreria
 
             return true;
         }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void TXT_USER_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

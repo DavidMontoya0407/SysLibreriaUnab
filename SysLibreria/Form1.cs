@@ -29,7 +29,7 @@ namespace SysLibreria
         public FormRol(Principal principal)
         {
             InitializeComponent();
-            principal = principal;
+            
         }
         private void FormRol_Load(object sender, EventArgs e)
         {
