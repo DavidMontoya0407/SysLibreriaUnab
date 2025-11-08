@@ -53,7 +53,7 @@
             // TXT_USUARIO
             // 
             this.TXT_USUARIO.Location = new System.Drawing.Point(33, 168);
-            this.TXT_USUARIO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TXT_USUARIO.Margin = new System.Windows.Forms.Padding(4);
             this.TXT_USUARIO.Name = "TXT_USUARIO";
             this.TXT_USUARIO.Size = new System.Drawing.Size(256, 22);
             this.TXT_USUARIO.TabIndex = 1;
@@ -75,14 +75,14 @@
             // TXT_CONTRASEÑA
             // 
             this.TXT_CONTRASEÑA.Location = new System.Drawing.Point(33, 225);
-            this.TXT_CONTRASEÑA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TXT_CONTRASEÑA.Margin = new System.Windows.Forms.Padding(4);
             this.TXT_CONTRASEÑA.Name = "TXT_CONTRASEÑA";
             this.TXT_CONTRASEÑA.Size = new System.Drawing.Size(256, 22);
             this.TXT_CONTRASEÑA.TabIndex = 3;
             // 
             // BTN_INGRESAR
             // 
-            this.BTN_INGRESAR.BackColor = System.Drawing.Color.LimeGreen;
+            this.BTN_INGRESAR.BackColor = System.Drawing.Color.Yellow;
             this.BTN_INGRESAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BTN_INGRESAR.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.BTN_INGRESAR.FlatAppearance.BorderSize = 70;
@@ -105,7 +105,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = global::SysLibreria.Properties.Resources.librerialevi2;
             this.pictureBox1.Location = new System.Drawing.Point(92, 24);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(139, 106);
             this.pictureBox1.TabIndex = 5;
@@ -127,7 +127,7 @@
             this.Controls.Add(this.TXT_USUARIO);
             this.Controls.Add(this.LBL_USUARIO);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
