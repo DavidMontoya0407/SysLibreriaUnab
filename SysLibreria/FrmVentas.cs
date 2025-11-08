@@ -27,7 +27,18 @@ namespace SysLibreria
 
         private void FrmVentas_Load(object sender, EventArgs e)
         {
-            dtpFecha.Value = DateTime.Now; 
+            dtpFechaInicial.Format = DateTimePickerFormat.Short;
+            dtpFechafin.Format = DateTimePickerFormat.Short;
+
+            
+            var usuarios = db.Usuario
+                .Select(u => new { u.IdUsuario, u.NomUsuario })
+                .ToList();
+
+            CBUsuario.DataSource = usuarios;
+            CBUsuario.DisplayMember = "NomUsuario";
+            CBUsuario.ValueMember = "IdUsuario";
+            CBUsuario.SelectedIndex = -1; 
         }
 
         private void CargarClientes()
@@ -40,18 +51,18 @@ namespace SysLibreria
                              })
                              .ToList();
 
-            CBCliente.DataSource = clientes;
-            CBCliente.DisplayMember = "Nombre";
-            CBCliente.ValueMember = "IdCliente";
-            CBCliente.SelectedIndex = -1; 
+            CBUsuario.DataSource = clientes;
+            CBUsuario.DisplayMember = "Nombre";
+            CBUsuario.ValueMember = "IdCliente";
+            CBUsuario.SelectedIndex = -1; 
         }
 
        
         private void LimpiarVentas()
         {
-            txtNumVenta.Text = "";
-            CBCliente.SelectedIndex = -1;
-            dtpFecha.Value = DateTime.Now;
+            
+            CBUsuario.SelectedIndex = -1;
+            dtpFechafin.Value = DateTime.Now;
           
         }
 
@@ -79,8 +90,8 @@ namespace SysLibreria
             if (dgvVentas.CurrentRow != null)
             {
                 IdVentaSeleccionada = Convert.ToInt32(dgvVentas.CurrentRow.Cells["IdVenta"].Value);
-                dtpFecha.Value = Convert.ToDateTime(dgvVentas.CurrentRow.Cells["Fecha"].Value);
-                CBCliente.Text = dgvVentas.CurrentRow.Cells["Cliente"].Value.ToString();
+                dtpFechafin.Value = Convert.ToDateTime(dgvVentas.CurrentRow.Cells["Fecha"].Value);
+                CBUsuario.Text = dgvVentas.CurrentRow.Cells["Cliente"].Value.ToString();
             }
             else
             {
@@ -134,7 +145,7 @@ namespace SysLibreria
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             LimpiarVentas();
-            CBCliente.Focus();
+            CBUsuario.Focus();
         }
 
        
@@ -154,42 +165,36 @@ namespace SysLibreria
       
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-            try
+            DateTime fechaInicio = dtpFechaInicial.Value.Date;
+            DateTime fechaFin = dtpFechafin.Value.Date;
+            int? idUsuario = CBUsuario.SelectedIndex >= 0
+                ? (int?)CBUsuario.SelectedValue
+                : null;
+
+           
+            var consulta = db.Venta.AsQueryable();
+
+        
+            consulta = consulta.Where(v => v.Fecha >= fechaInicio && v.Fecha <= fechaFin);
+
+           
+            if (idUsuario.HasValue)
             {
-                Venta nuevaVenta = new Venta
-                {
-                    Fecha = dtpFecha.Value,
-                    IdCliente = Convert.ToInt32(CBCliente.SelectedValue),
-                    
-                };
-
-               
-                db.Venta.Add(nuevaVenta);
-                db.SaveChanges();
-
-                MessageBox.Show("Venta guardada correctamente");
-
-                CargarVentas();
+                consulta = consulta.Where(v => v.IdUsuario == idUsuario.Value);
             }
-            catch (Exception ex)
+
+            var resultado = consulta.Select(v => new
             {
-                { string error = ex.InnerException?.InnerException?.Message
-                       ?? ex.InnerException?.Message
-                       ?? ex.Message;
+                v.IdVenta,
+                v.Fecha,
+                Usuario = v.Usuario.NomUsuario,
+                v.SubTotal,
+                v.Total
+            }).ToList();
 
-                    MessageBox.Show("Error al guardar:\n" + error);
-                }
-
-            }
-            }
-        private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void txtNumVenta_TextChanged(object sender, EventArgs e)
-        {
-
+            dgvVentas.DataSource = resultado;
         }
     }
 }
+       
+     

@@ -61,29 +61,31 @@ namespace SysLibreria
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string usuario = TXT_USUARIO.Text.Trim();
+            string contrasena = TXT_CONTRASEÑA.Text.Trim();
 
-            try { 
-            if (validar(true))
+            using (BDLIBRERIAEntities db = new BDLIBRERIAEntities())
             {
-                if (autenticar(true)) 
-                {
-                  //Principal principalForm = new Principal(this);
-                  //  principalForm.Show();
+                var user = db.Usuario.FirstOrDefault(u => u.NomUsuario == usuario && u.Contraseña == contrasena);
 
-                        Factura facturaForm = new Factura();
-                        facturaForm.Show();
-                    }
+                if (user != null)
+                {
+                   
+                    Principal.NombreUsuario = user.NomUsuario;
+
+                    Principal frm = new Principal();
+                    frm.Show();
+
+                    this.Hide(); 
+                }
                 else
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o contraseña incorrectos",
+                                    "Error de inicio de sesión",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 }
             }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al autenticar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
 
         }
 
@@ -98,6 +100,11 @@ namespace SysLibreria
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
         {
 
         }

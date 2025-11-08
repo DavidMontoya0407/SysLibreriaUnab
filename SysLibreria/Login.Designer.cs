@@ -82,7 +82,7 @@
             // 
             // BTN_INGRESAR
             // 
-            this.BTN_INGRESAR.BackColor = System.Drawing.Color.Yellow;
+            this.BTN_INGRESAR.BackColor = System.Drawing.Color.ForestGreen;
             this.BTN_INGRESAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BTN_INGRESAR.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.BTN_INGRESAR.FlatAppearance.BorderSize = 70;
@@ -93,7 +93,7 @@
             this.BTN_INGRESAR.Location = new System.Drawing.Point(33, 287);
             this.BTN_INGRESAR.Margin = new System.Windows.Forms.Padding(0);
             this.BTN_INGRESAR.Name = "BTN_INGRESAR";
-            this.BTN_INGRESAR.Size = new System.Drawing.Size(256, 33);
+            this.BTN_INGRESAR.Size = new System.Drawing.Size(256, 41);
             this.BTN_INGRESAR.TabIndex = 4;
             this.BTN_INGRESAR.Text = "Ingresar";
             this.BTN_INGRESAR.UseVisualStyleBackColor = false;
@@ -130,6 +130,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

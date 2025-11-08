@@ -35,6 +35,7 @@ namespace SysLibreria
             CB_MENU.Items.Add("USUARIOS");
             CB_MENU.Items.Add("CLIENTES");
             CB_MENU.Items.Add("VENTAS");
+            CB_MENU.Items.Add("FACTURAS");
 
             CB_MENU.SelectedIndex = -1;
 
@@ -71,8 +72,8 @@ namespace SysLibreria
                     frmVentas.ShowDialog(this);
                     break;
 
-                case "FACTURA":
-                     Factura factura = new Factura();
+                case "FACTURAS":
+                    Factura factura = new Factura();
                         factura.ShowDialog(this);
                     break;
 
@@ -100,6 +101,16 @@ namespace SysLibreria
 
 
             CbProductos.SelectedIndex = 0;
+        }
+
+        private void Gp_Menu_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
