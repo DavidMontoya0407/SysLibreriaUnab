@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.ComponentModel; 
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -52,10 +52,7 @@ namespace SysLibreria
             txtNumVenta.Text = "";
             CBCliente.SelectedIndex = -1;
             dtpFecha.Value = DateTime.Now;
-            txtSubtotal.Text = "";
-            txtIVA.Text = "";
-            txtTotal.Text = "";
-            IdVentaSeleccionada = 0;
+          
         }
 
      
@@ -84,9 +81,6 @@ namespace SysLibreria
                 IdVentaSeleccionada = Convert.ToInt32(dgvVentas.CurrentRow.Cells["IdVenta"].Value);
                 dtpFecha.Value = Convert.ToDateTime(dgvVentas.CurrentRow.Cells["Fecha"].Value);
                 CBCliente.Text = dgvVentas.CurrentRow.Cells["Cliente"].Value.ToString();
-                txtSubtotal.Text = dgvVentas.CurrentRow.Cells["Subtotal"].Value.ToString();
-                txtIVA.Text = dgvVentas.CurrentRow.Cells["IVA"].Value.ToString();
-                txtTotal.Text = dgvVentas.CurrentRow.Cells["Total"].Value.ToString();
             }
             else
             {
@@ -155,38 +149,9 @@ namespace SysLibreria
 
         }
 
-        private void txtSubtotal_TextChanged(object sender, EventArgs e)
-        {
-            decimal subtotal;
-            if (decimal.TryParse(txtSubtotal.Text, out subtotal))
-            {
-                decimal iva = subtotal * 0.13m; 
-                decimal total = subtotal + iva;
+       
 
-                txtIVA.Text = iva.ToString("0.00");
-                txtTotal.Text = total.ToString("0.00");
-            }
-            else
-            {
-                txtIVA.Text = "";
-                txtTotal.Text = "";
-            }
-        }
-
-        private void dgvVentas_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow fila = dgvVentas.Rows[e.RowIndex];
-                IdVentaSeleccionada = Convert.ToInt32(fila.Cells["IdVenta"].Value);
-                dtpFecha.Value = Convert.ToDateTime(fila.Cells["Fecha"].Value);
-                CBCliente.Text = fila.Cells["Cliente"].Value.ToString();
-                txtSubtotal.Text = fila.Cells["Subtotal"].Value.ToString();
-                txtIVA.Text = fila.Cells["IVA"].Value.ToString();
-                txtTotal.Text = fila.Cells["Total"].Value.ToString();
-            }
-        }
-
+      
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             try
@@ -195,9 +160,7 @@ namespace SysLibreria
                 {
                     Fecha = dtpFecha.Value,
                     IdCliente = Convert.ToInt32(CBCliente.SelectedValue),
-                    SubTotal = Convert.ToDecimal(txtSubtotal.Text),
-                    Iva = Convert.ToDecimal(txtIVA.Text),
-                    Total = Convert.ToDecimal(txtTotal.Text)
+                    
                 };
 
                

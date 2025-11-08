@@ -80,6 +80,10 @@ namespace SysLibreria
             }
         }
 
-    
+        private void TXT_AGG_ROL_TextChanged(object sender, EventArgs e)
+        {
+            TXT_AGG_ROL.Size = new Size(300, 200); 
+        }
     }
+    
 }
