@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarRol));
             this.LBL_AGG_ROL = new System.Windows.Forms.Label();
             this.TXT_AGG_ROL = new System.Windows.Forms.TextBox();
             this.BTN_AGG_ROL = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LBL_AGG_ROL
             // 
             this.LBL_AGG_ROL.AutoSize = true;
             this.LBL_AGG_ROL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_AGG_ROL.Location = new System.Drawing.Point(36, 21);
+            this.LBL_AGG_ROL.Location = new System.Drawing.Point(160, 56);
             this.LBL_AGG_ROL.Name = "LBL_AGG_ROL";
             this.LBL_AGG_ROL.Size = new System.Drawing.Size(78, 22);
             this.LBL_AGG_ROL.TabIndex = 0;
@@ -50,7 +53,7 @@
             // 
             // TXT_AGG_ROL
             // 
-            this.TXT_AGG_ROL.Location = new System.Drawing.Point(40, 47);
+            this.TXT_AGG_ROL.Location = new System.Drawing.Point(53, 82);
             this.TXT_AGG_ROL.Margin = new System.Windows.Forms.Padding(10, 4, 3, 4);
             this.TXT_AGG_ROL.MinimumSize = new System.Drawing.Size(200, 40);
             this.TXT_AGG_ROL.Name = "TXT_AGG_ROL";
@@ -65,7 +68,7 @@
             this.BTN_AGG_ROL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_AGG_ROL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_AGG_ROL.ForeColor = System.Drawing.Color.White;
-            this.BTN_AGG_ROL.Location = new System.Drawing.Point(112, 130);
+            this.BTN_AGG_ROL.Location = new System.Drawing.Point(119, 166);
             this.BTN_AGG_ROL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BTN_AGG_ROL.Name = "BTN_AGG_ROL";
             this.BTN_AGG_ROL.Size = new System.Drawing.Size(157, 43);
@@ -77,6 +80,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.BTN_AGG_ROL);
             this.groupBox1.Controls.Add(this.LBL_AGG_ROL);
             this.groupBox1.Controls.Add(this.TXT_AGG_ROL);
@@ -110,6 +114,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ROL";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(164, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // AgregarRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -125,6 +140,7 @@
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -137,5 +153,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

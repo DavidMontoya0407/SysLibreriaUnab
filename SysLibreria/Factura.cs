@@ -15,8 +15,8 @@ namespace SysLibreria
         List<Producto> listaProductos = new List<Producto>();
         List<Factura> listaFacturas = new List<Factura>();
         List<Usuario> usuarios = new List<Usuario>();
+        Principal Principal = new Principal();
 
-        
 
         public Factura()
         {

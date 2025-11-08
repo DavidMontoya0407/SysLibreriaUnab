@@ -93,6 +93,7 @@
             // 
             this.BTN_ROL.BackColor = System.Drawing.Color.RoyalBlue;
             this.BTN_ROL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_ROL.ForeColor = System.Drawing.Color.White;
             this.BTN_ROL.Location = new System.Drawing.Point(438, 155);
             this.BTN_ROL.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_ROL.Name = "BTN_ROL";
@@ -277,6 +278,7 @@
             // 
             this.BTN_AGREGAR.BackColor = System.Drawing.Color.ForestGreen;
             this.BTN_AGREGAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_AGREGAR.ForeColor = System.Drawing.Color.White;
             this.BTN_AGREGAR.Location = new System.Drawing.Point(564, 155);
             this.BTN_AGREGAR.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_AGREGAR.Name = "BTN_AGREGAR";
@@ -290,6 +292,7 @@
             // 
             this.BTN_ELIMINAR.BackColor = System.Drawing.Color.Crimson;
             this.BTN_ELIMINAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_ELIMINAR.ForeColor = System.Drawing.Color.White;
             this.BTN_ELIMINAR.Location = new System.Drawing.Point(868, 154);
             this.BTN_ELIMINAR.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_ELIMINAR.Name = "BTN_ELIMINAR";
@@ -322,6 +325,7 @@
             // 
             this.BTN_MODIFICAR.BackColor = System.Drawing.Color.Chocolate;
             this.BTN_MODIFICAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_MODIFICAR.ForeColor = System.Drawing.Color.White;
             this.BTN_MODIFICAR.Location = new System.Drawing.Point(734, 154);
             this.BTN_MODIFICAR.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_MODIFICAR.Name = "BTN_MODIFICAR";
@@ -358,6 +362,7 @@
             this.groupBox1.Size = new System.Drawing.Size(986, 215);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // DGV_USUARIO
             // 

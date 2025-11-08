@@ -53,6 +53,7 @@
             this.DGV_CATEGORIA.AllowUserToAddRows = false;
             this.DGV_CATEGORIA.AllowUserToDeleteRows = false;
             this.DGV_CATEGORIA.AllowUserToOrderColumns = true;
+            this.DGV_CATEGORIA.BackgroundColor = System.Drawing.Color.White;
             this.DGV_CATEGORIA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_CATEGORIA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdCategoria,
@@ -75,6 +76,7 @@
             this.IdCategoria.Name = "IdCategoria";
             this.IdCategoria.ReadOnly = true;
             this.IdCategoria.Visible = false;
+            this.IdCategoria.Width = 125;
             // 
             // Nombre
             // 
@@ -199,6 +201,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.LavenderBlush;
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.Controls.Add(this.label1);

@@ -13,6 +13,7 @@ namespace SysLibreria
     public partial class Principal : Form
     {
         List<Usuario> listaUsuario = new List<Usuario>();
+
         public static int IdUsuarioLogueado;
         public static string NombreUsuario;
 
@@ -30,20 +31,29 @@ namespace SysLibreria
         {
             CB_MENU.Items.Clear();
 
-           
+
             CB_MENU.Items.Add("ROLES");
             CB_MENU.Items.Add("USUARIOS");
             CB_MENU.Items.Add("CLIENTES");
             CB_MENU.Items.Add("VENTAS");
-            CB_MENU.Items.Add("FACTURAS");
 
             CB_MENU.SelectedIndex = -1;
 
             CbProductos.Items.Clear();
-            CbProductos.Items.Add("---Inventario Producto---");
+            CbProductos.Items.Add("--Inventario de Productos--");
             CbProductos.Items.Add("PRODUCTOS");
             CbProductos.Items.Add("CATEGORIAS");
             CbProductos.SelectedIndex = 0;
+
+
+
+
+
+            CBFactura.Items.Add("--Facturas--");
+            CBFactura.Items.Add("FACTURA");
+            CBFactura.SelectedIndex = 0;
+
+
         }
 
 
@@ -70,11 +80,6 @@ namespace SysLibreria
                     FrmVentas frmVentas = new FrmVentas();
                     frmVentas.StartPosition = FormStartPosition.CenterScreen;
                     frmVentas.ShowDialog(this);
-                    break;
-
-                case "FACTURAS":
-                    Factura factura = new Factura();
-                        factura.ShowDialog(this);
                     break;
 
                 default:
@@ -111,6 +116,22 @@ namespace SysLibreria
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBFactura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBFactura.SelectedItem != null && CBFactura.SelectedItem.ToString() == "FACTURA")
+            {
+               
+                Factura frm = new Factura();
+                frm.Show();
+                CBFactura.SelectedIndex = -1;
+            }
         }
     }
 }

@@ -30,22 +30,28 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.Gp_Menu = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.CBFactura = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CbProductos = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.CB_MENU = new System.Windows.Forms.ComboBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.Gp_Menu.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // Gp_Menu
             // 
-            this.Gp_Menu.BackColor = System.Drawing.Color.LavenderBlush;
+            this.Gp_Menu.BackColor = System.Drawing.Color.White;
+            this.Gp_Menu.Controls.Add(this.groupBox3);
             this.Gp_Menu.Controls.Add(this.groupBox2);
             this.Gp_Menu.Controls.Add(this.groupBox1);
             this.Gp_Menu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -54,15 +60,43 @@
             this.Gp_Menu.Location = new System.Drawing.Point(1, 2);
             this.Gp_Menu.Margin = new System.Windows.Forms.Padding(1, 4, 4, 4);
             this.Gp_Menu.Name = "Gp_Menu";
-            this.Gp_Menu.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Gp_Menu.Size = new System.Drawing.Size(808, 427);
+            this.Gp_Menu.Padding = new System.Windows.Forms.Padding(4);
+            this.Gp_Menu.Size = new System.Drawing.Size(714, 516);
             this.Gp_Menu.TabIndex = 0;
             this.Gp_Menu.TabStop = false;
             this.Gp_Menu.Text = "MENÚ";
             this.Gp_Menu.Enter += new System.EventHandler(this.Gp_Menu_Enter);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.LavenderBlush;
+            this.groupBox3.Controls.Add(this.pictureBox3);
+            this.groupBox3.Controls.Add(this.CBFactura);
+            this.groupBox3.Location = new System.Drawing.Point(7, 348);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(639, 150);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // CBFactura
+            // 
+            this.CBFactura.CausesValidation = false;
+            this.CBFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBFactura.FormattingEnabled = true;
+            this.CBFactura.Location = new System.Drawing.Point(101, 70);
+            this.CBFactura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CBFactura.Name = "CBFactura";
+            this.CBFactura.Size = new System.Drawing.Size(199, 24);
+            this.CBFactura.TabIndex = 0;
+            this.CBFactura.Text = "--Facturas--";
+            this.CBFactura.SelectedIndexChanged += new System.EventHandler(this.CBFactura_SelectedIndexChanged);
+            // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.LavenderBlush;
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.CbProductos);
             this.groupBox2.Location = new System.Drawing.Point(7, 175);
@@ -88,18 +122,20 @@
             // 
             // CbProductos
             // 
+            this.CbProductos.CausesValidation = false;
             this.CbProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbProductos.FormattingEnabled = true;
             this.CbProductos.Location = new System.Drawing.Point(101, 70);
             this.CbProductos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CbProductos.Name = "CbProductos";
             this.CbProductos.Size = new System.Drawing.Size(199, 24);
-            this.CbProductos.TabIndex = 2;
-            this.CbProductos.Text = "---Inventario de Productos---";
+            this.CbProductos.TabIndex = 0;
+            this.CbProductos.Text = "--Inventario de Productos--";
             this.CbProductos.SelectedIndexChanged += new System.EventHandler(this.CbProductos_SelectedIndexChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.LavenderBlush;
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.CB_MENU);
             this.groupBox1.Location = new System.Drawing.Point(7, 36);
@@ -127,39 +163,52 @@
             // CB_MENU
             // 
             this.CB_MENU.CausesValidation = false;
-            this.CB_MENU.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.CB_MENU.Cursor = System.Windows.Forms.Cursors.Default;
             this.CB_MENU.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_MENU.FormattingEnabled = true;
+            this.CB_MENU.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.CB_MENU.Items.AddRange(new object[] {
             "ROLES",
             "USUARIOS",
             "CLIENTES",
             "FACTURA"});
             this.CB_MENU.Location = new System.Drawing.Point(103, 50);
-            this.CB_MENU.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CB_MENU.Margin = new System.Windows.Forms.Padding(4);
             this.CB_MENU.Name = "CB_MENU";
             this.CB_MENU.Size = new System.Drawing.Size(197, 24);
             this.CB_MENU.TabIndex = 0;
             this.CB_MENU.Text = "--Control de personal--";
-            this.CB_MENU.UseWaitCursor = true;
             this.CB_MENU.SelectedIndexChanged += new System.EventHandler(this.CB_MENU_SelectedIndexChanged);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(6, 34);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(71, 80);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 37;
+            this.pictureBox3.TabStop = false;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(812, 432);
+            this.ClientSize = new System.Drawing.Size(721, 531);
             this.Controls.Add(this.Gp_Menu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Principal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.Gp_Menu.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,5 +222,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox CBFactura;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

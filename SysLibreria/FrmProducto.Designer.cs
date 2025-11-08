@@ -31,6 +31,13 @@
             this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.DGV_PRODUCTO = new System.Windows.Forms.DataGridView();
+            this.IdProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -46,13 +53,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.IdProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PRODUCTO)).BeginInit();
@@ -85,6 +85,7 @@
             this.DGV_PRODUCTO.AllowUserToAddRows = false;
             this.DGV_PRODUCTO.AllowUserToDeleteRows = false;
             this.DGV_PRODUCTO.AllowUserToOrderColumns = true;
+            this.DGV_PRODUCTO.BackgroundColor = System.Drawing.Color.White;
             this.DGV_PRODUCTO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_PRODUCTO.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdProducto,
@@ -94,7 +95,8 @@
             this.Stock,
             this.Proveedor,
             this.Categoria});
-            this.DGV_PRODUCTO.Location = new System.Drawing.Point(448, 90);
+            this.DGV_PRODUCTO.GridColor = System.Drawing.Color.White;
+            this.DGV_PRODUCTO.Location = new System.Drawing.Point(435, 90);
             this.DGV_PRODUCTO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGV_PRODUCTO.MultiSelect = false;
             this.DGV_PRODUCTO.Name = "DGV_PRODUCTO";
@@ -107,6 +109,63 @@
             this.DGV_PRODUCTO.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_PRODUCTO_CellClick);
             this.DGV_PRODUCTO.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_PRODUCTO_CellContentClick);
             this.DGV_PRODUCTO.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_PRODUCTO_CellDoubleClick);
+            // 
+            // IdProducto
+            // 
+            this.IdProducto.HeaderText = "IdProducto";
+            this.IdProducto.MinimumWidth = 6;
+            this.IdProducto.Name = "IdProducto";
+            this.IdProducto.ReadOnly = true;
+            this.IdProducto.Visible = false;
+            this.IdProducto.Width = 125;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 125;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.MinimumWidth = 6;
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 125;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MinimumWidth = 6;
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 125;
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.MinimumWidth = 6;
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            this.Stock.Width = 125;
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.MinimumWidth = 6;
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.ReadOnly = true;
+            this.Proveedor.Width = 125;
+            // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.MinimumWidth = 6;
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            this.Categoria.Width = 125;
             // 
             // btnModificar
             // 
@@ -260,62 +319,9 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "Categoria:";
             // 
-            // IdProducto
-            // 
-            this.IdProducto.HeaderText = "IdProducto";
-            this.IdProducto.MinimumWidth = 6;
-            this.IdProducto.Name = "IdProducto";
-            this.IdProducto.ReadOnly = true;
-            this.IdProducto.Visible = false;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 125;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.MinimumWidth = 6;
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 125;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MinimumWidth = 6;
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // Stock
-            // 
-            this.Stock.HeaderText = "Stock";
-            this.Stock.MinimumWidth = 6;
-            this.Stock.Name = "Stock";
-            this.Stock.ReadOnly = true;
-            // 
-            // Proveedor
-            // 
-            this.Proveedor.HeaderText = "Proveedor";
-            this.Proveedor.MinimumWidth = 6;
-            this.Proveedor.Name = "Proveedor";
-            this.Proveedor.ReadOnly = true;
-            this.Proveedor.Width = 125;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.MinimumWidth = 6;
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            this.Categoria.Width = 125;
-            // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.LavenderBlush;
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -352,7 +358,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 492);
+            this.ClientSize = new System.Drawing.Size(948, 492);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DGV_PRODUCTO);
