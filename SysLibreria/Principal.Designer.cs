@@ -30,16 +30,18 @@
         {
             this.Gp_Menu = new System.Windows.Forms.GroupBox();
             this.CB_MENU = new System.Windows.Forms.ComboBox();
+            this.CbProductos = new System.Windows.Forms.ComboBox();
             this.Gp_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // Gp_Menu
             // 
+            this.Gp_Menu.Controls.Add(this.CbProductos);
             this.Gp_Menu.Controls.Add(this.CB_MENU);
             this.Gp_Menu.Location = new System.Drawing.Point(7, 6);
-            this.Gp_Menu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gp_Menu.Margin = new System.Windows.Forms.Padding(4);
             this.Gp_Menu.Name = "Gp_Menu";
-            this.Gp_Menu.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gp_Menu.Padding = new System.Windows.Forms.Padding(4);
             this.Gp_Menu.Size = new System.Drawing.Size(1045, 54);
             this.Gp_Menu.TabIndex = 0;
             this.Gp_Menu.TabStop = false;
@@ -54,13 +56,23 @@
             "USUARIOS",
             "CLIENTES"});
             this.CB_MENU.Location = new System.Drawing.Point(63, 17);
-            this.CB_MENU.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CB_MENU.Margin = new System.Windows.Forms.Padding(4);
             this.CB_MENU.Name = "CB_MENU";
             this.CB_MENU.Size = new System.Drawing.Size(167, 24);
             this.CB_MENU.TabIndex = 0;
             this.CB_MENU.Text = "--Control de personal--";
             this.CB_MENU.UseWaitCursor = true;
             this.CB_MENU.SelectedIndexChanged += new System.EventHandler(this.CB_MENU_SelectedIndexChanged);
+            // 
+            // CbProductos
+            // 
+            this.CbProductos.FormattingEnabled = true;
+            this.CbProductos.Location = new System.Drawing.Point(273, 17);
+            this.CbProductos.Name = "CbProductos";
+            this.CbProductos.Size = new System.Drawing.Size(198, 24);
+            this.CbProductos.TabIndex = 2;
+            this.CbProductos.Text = "---Inventario de Productos---";
+            this.CbProductos.SelectedIndexChanged += new System.EventHandler(this.CbProductos_SelectedIndexChanged);
             // 
             // Principal
             // 
@@ -69,7 +81,7 @@
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.Gp_Menu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Principal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
@@ -82,5 +94,6 @@
 
         private System.Windows.Forms.GroupBox Gp_Menu;
         private System.Windows.Forms.ComboBox CB_MENU;
+        private System.Windows.Forms.ComboBox CbProductos;
     }
 }

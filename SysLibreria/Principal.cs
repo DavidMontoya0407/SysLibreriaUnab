@@ -36,7 +36,13 @@ namespace SysLibreria
             CB_MENU.Items.Add("CLIENTES");
             CB_MENU.Items.Add("VENTAS");
 
-            CB_MENU.SelectedIndex = -1; 
+            CB_MENU.SelectedIndex = -1;
+
+            CbProductos.Items.Clear();
+            CbProductos.Items.Add("---Inventario Producto---");
+            CbProductos.Items.Add("PRODUCTOS");
+            CbProductos.Items.Add("CATEGORIAS");
+            CbProductos.SelectedIndex = 0;
         }
 
 
@@ -68,6 +74,27 @@ namespace SysLibreria
                 default:
                     break;
             }
+        }
+
+
+
+        private void CbProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (CbProductos.SelectedIndex)
+            {
+                case 1:
+                    FrmProducto frmProducto = new FrmProducto();
+                    frmProducto.ShowDialog();
+                    break;
+
+                case 2:
+                    FrmCategoria frmCategoria = new FrmCategoria();
+                    frmCategoria.ShowDialog();
+                    break;
+            }
+
+
+            CbProductos.SelectedIndex = 0;
         }
     }
 }
