@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SysLibreria
 {
-    internal class SesionActual
+    public class SesionActual
     {
         public static int IdUsuario {  get; set; }
     }

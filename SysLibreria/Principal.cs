@@ -71,6 +71,11 @@ namespace SysLibreria
                     frmVentas.ShowDialog(this);
                     break;
 
+                case "FACTURA":
+                     Factura factura = new Factura();
+                        factura.ShowDialog(this);
+                    break;
+
                 default:
                     break;
             }

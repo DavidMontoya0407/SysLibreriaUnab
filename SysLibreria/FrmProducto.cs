@@ -301,5 +301,10 @@ namespace SysLibreria
                     cbCategoria.SelectedValue = Convert.ToInt32(fila.Cells["IdCategoria"].Value);
             }
         }
+
+        private void DGV_PRODUCTO_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

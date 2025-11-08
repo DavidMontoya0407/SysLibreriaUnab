@@ -12,6 +12,9 @@ namespace SysLibreria
 {
     public partial class Login : Form
     {
+
+        public static int IdUsuarioLogueado = 0;
+
         List<Usuario> listaUsuario = new List<Usuario>();
         public Login()
         {
@@ -44,6 +47,8 @@ namespace SysLibreria
                 var usuarioe = (from u in DB.Usuario
                            where u.NomUsuario == TXT_USUARIO.Text && u.Contraseña == TXT_CONTRASEÑA.Text
                            select u).FirstOrDefault();
+                SesionActual.IdUsuario = usuarioe.IdUsuario;
+
                 return usuarioe != null;
             }
       
