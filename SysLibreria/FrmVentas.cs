@@ -12,141 +12,40 @@ namespace SysLibreria
 {
     public partial class FrmVentas : Form
     {
+
+        List<Venta> listaVentas = new List<Venta>();
+        FormReporte Formreporte = new FormReporte();
         public FrmVentas()
         {
             InitializeComponent();
-            CargarClientes();
+
         }
 
-
-
-        BDLIBRERIAEntities db = new BDLIBRERIAEntities();
-        int IdVentaSeleccionada = 0;
-
-       
+        public FrmVentas(FormReporte formReporte)
+        {
+            InitializeComponent();
+            Formreporte = formReporte;
+        }
 
         private void FrmVentas_Load(object sender, EventArgs e)
         {
-            dtpFechaInicial.Format = DateTimePickerFormat.Short;
-            dtpFechafin.Format = DateTimePickerFormat.Short;
-
-            
-            var usuarios = db.Usuario
-                .Select(u => new { u.IdUsuario, u.NomUsuario })
-                .ToList();
-
-            CBUsuario.DataSource = usuarios;
-            CBUsuario.DisplayMember = "NomUsuario";
-            CBUsuario.ValueMember = "IdUsuario";
-            CBUsuario.SelectedIndex = -1; 
+         
         }
 
-        private void CargarClientes()
-        {
-            var clientes = db.Cliente
-                             .Select(c => new
-                             {
-                                 c.IdCliente,
-                                 c.Nombre
-                             })
-                             .ToList();
-
-            CBUsuario.DataSource = clientes;
-            CBUsuario.DisplayMember = "Nombre";
-            CBUsuario.ValueMember = "IdCliente";
-            CBUsuario.SelectedIndex = -1; 
-        }
+       
 
        
         private void LimpiarVentas()
         {
-            
-            CBUsuario.SelectedIndex = -1;
-            dtpFechafin.Value = DateTime.Now;
+           
           
         }
 
      
-        private void CargarVentas()
-        {
-              dgvVentas.DataSource = db.Venta
-                          .Select(v => new
-                          {
-                              v.IdVenta,
-                              v.Fecha,
-                              Cliente = v.Cliente.Nombre,
-                              v.SubTotal,
-                              v.Iva,
-                              v.Total
-                          })
-                          .ToList();
-
-          
-        }
+        
 
        
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (dgvVentas.CurrentRow != null)
-            {
-                IdVentaSeleccionada = Convert.ToInt32(dgvVentas.CurrentRow.Cells["IdVenta"].Value);
-                dtpFechafin.Value = Convert.ToDateTime(dgvVentas.CurrentRow.Cells["Fecha"].Value);
-                CBUsuario.Text = dgvVentas.CurrentRow.Cells["Cliente"].Value.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Seleccione una venta para editar.");
-            }
-        }
-
-  
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (IdVentaSeleccionada == 0)
-            {
-                MessageBox.Show("Seleccione una venta antes de eliminar.");
-                return;
-            }
-
-            DialogResult confirmacion = MessageBox.Show(
-                "¿Seguro quiere eliminar esta venta?",
-                "Confirmar eliminación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (confirmacion == DialogResult.Yes)
-            {
-                try
-                {
-                    var ventaEliminar = db.Venta.FirstOrDefault(v => v.IdVenta == IdVentaSeleccionada);
-                    if (ventaEliminar != null)
-                    {
-                        db.Venta.Remove(ventaEliminar);
-                        db.SaveChanges();
-                        MessageBox.Show("Venta eliminada correctamente.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la venta a eliminar.");
-                    }
-
-                    LimpiarVentas();
-                    CargarVentas();
-                    IdVentaSeleccionada = 0;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al eliminar la venta: " + ex.Message);
-                }
-            }
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            LimpiarVentas();
-            CBUsuario.Focus();
-        }
+        
 
        
        
@@ -161,38 +60,95 @@ namespace SysLibreria
         }
 
        
+        
 
-      
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-            DateTime fechaInicio = dtpFechaInicial.Value.Date;
-            DateTime fechaFin = dtpFechafin.Value.Date;
-            int? idUsuario = CBUsuario.SelectedIndex >= 0
-                ? (int?)CBUsuario.SelectedValue
-                : null;
 
-           
-            var consulta = db.Venta.AsQueryable();
+            DateTime fInicio = dtpFechaInicial.Value.Date;
+            DateTime fFinal = dtpFechafin.Value.Date;
 
-        
-            consulta = consulta.Where(v => v.Fecha >= fechaInicio && v.Fecha <= fechaFin);
+         
+            dgvVentas.Rows.Clear();
 
-           
-            if (idUsuario.HasValue)
+            if (fInicio > fFinal)
             {
-                consulta = consulta.Where(v => v.IdUsuario == idUsuario.Value);
+                MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final.",
+                                "Error de rango", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            var resultado = consulta.Select(v => new
-            {
-                v.IdVenta,
-                v.Fecha,
-                Usuario = v.Usuario.NomUsuario,
-                v.SubTotal,
-                v.Total
-            }).ToList();
+            var ventasFiltradas = listaVentas
+                .Where(v => v.Fecha.Date >= fInicio && v.Fecha.Date <= fFinal)
+                .ToList();
 
-            dgvVentas.DataSource = resultado;
+       
+            if (ventasFiltradas.Count == 0)
+            {
+                MessageBox.Show("No se encontraron ventas en el rango de fechas seleccionado.",
+                                "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+         
+            foreach (var venta in ventasFiltradas)
+            {
+                dgvVentas.Rows.Add(
+                    venta.IdVenta,
+                    venta.Fecha.ToString("dd/MM/yyyy"),  
+                    venta.Cliente.Nombre,
+                    venta.Usuario.Nombres
+                );
+            }
+
+
+        }
+
+        private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+
+            if (dgvVentas.Rows[e.RowIndex].Selected)
+            {
+                Formreporte.TXT_FECHA.Text = dgvVentas.Rows[e.RowIndex].Cells[1].Value.ToString();
+                Formreporte.TXT_CLIENTE.Text = dgvVentas.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Formreporte.TXT_VENDEDOR.Text = dgvVentas.Rows[e.RowIndex].Cells[3].Value.ToString();
+                this.Close();
+            }
+
+        }
+
+        private void FrmVentas_Load_1(object sender, EventArgs e)
+        {
+            dgvVentas.Rows.Clear();
+            using (BDLIBRERIAEntities DB = new BDLIBRERIAEntities())
+            {
+                listaVentas = (from venta in DB.Venta
+                               select venta).ToList();
+                foreach (var venta in listaVentas)
+                {
+                    dgvVentas.Rows.Add(venta.IdVenta, venta.Fecha, venta.Cliente.Nombre, venta.Usuario.Nombres);
+                }
+            }
+        }
+
+        private void dtpFechaInicial_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+            if (dgvVentas.Rows[e.RowIndex].Selected)
+            {
+                Formreporte.TXT_FECHA.Text = dgvVentas.Rows[e.RowIndex].Cells[1].Value.ToString();
+                Formreporte.TXT_CLIENTE.Text = dgvVentas.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Formreporte.TXT_VENDEDOR.Text = dgvVentas.Rows[e.RowIndex].Cells[3].Value.ToString();
+                this.Close();
+            }
+           
         }
     }
 }
