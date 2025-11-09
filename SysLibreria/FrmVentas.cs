@@ -27,32 +27,10 @@ namespace SysLibreria
             Formreporte = formReporte;
         }
 
-        private void FrmVentas_Load(object sender, EventArgs e)
-        {
-         
-        }
-
-       
-
-       
-        private void LimpiarVentas()
-        {
-           
-          
-        }
-
-     
-        
-
-       
-        
 
        
        
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
