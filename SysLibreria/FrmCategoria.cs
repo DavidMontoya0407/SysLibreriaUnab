@@ -102,7 +102,7 @@ namespace SysLibreria
         {
             if (categoriaSeleccionadaId == null)
             {
-                MessageBox.Show("Seleccione una categoría para modificar (doble clic en la tabla).");
+                MessageBox.Show("Seleccione una categoría para modificar.");
                 return;
             }
 
@@ -178,6 +178,11 @@ namespace SysLibreria
             txtNombre.Text = "";
             txtDescripcion.Text = "";
             categoriaSeleccionadaId = null; // ← Limpiar ID
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -188,7 +188,7 @@ namespace SysLibreria
         {
             if (productoSeleccionadoId == null)
             {
-                MessageBox.Show("Seleccione un producto para modificar (doble clic en la tabla).");
+                MessageBox.Show("Seleccione un producto para modificar.");
                 return;
             }
 
@@ -306,5 +306,7 @@ namespace SysLibreria
         {
 
         }
+
+        
     }
 }
