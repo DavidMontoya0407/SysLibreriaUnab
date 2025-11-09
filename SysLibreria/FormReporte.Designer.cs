@@ -48,67 +48,77 @@
             // LBL_FECHA
             // 
             this.LBL_FECHA.AutoSize = true;
-            this.LBL_FECHA.Location = new System.Drawing.Point(3, 16);
+            this.LBL_FECHA.Location = new System.Drawing.Point(7, 34);
+            this.LBL_FECHA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBL_FECHA.Name = "LBL_FECHA";
-            this.LBL_FECHA.Size = new System.Drawing.Size(37, 13);
+            this.LBL_FECHA.Size = new System.Drawing.Size(49, 18);
             this.LBL_FECHA.TabIndex = 0;
             this.LBL_FECHA.Text = "Fecha";
             // 
             // TXT_FECHA
             // 
-            this.TXT_FECHA.Location = new System.Drawing.Point(46, 13);
+            this.TXT_FECHA.Location = new System.Drawing.Point(61, 25);
+            this.TXT_FECHA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TXT_FECHA.Multiline = true;
             this.TXT_FECHA.Name = "TXT_FECHA";
             this.TXT_FECHA.ReadOnly = true;
-            this.TXT_FECHA.Size = new System.Drawing.Size(114, 20);
+            this.TXT_FECHA.Size = new System.Drawing.Size(151, 24);
             this.TXT_FECHA.TabIndex = 1;
             // 
             // LBL_VENDEDOR
             // 
             this.LBL_VENDEDOR.AutoSize = true;
-            this.LBL_VENDEDOR.Location = new System.Drawing.Point(229, 16);
+            this.LBL_VENDEDOR.Location = new System.Drawing.Point(305, 28);
+            this.LBL_VENDEDOR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBL_VENDEDOR.Name = "LBL_VENDEDOR";
-            this.LBL_VENDEDOR.Size = new System.Drawing.Size(53, 13);
+            this.LBL_VENDEDOR.Size = new System.Drawing.Size(71, 18);
             this.LBL_VENDEDOR.TabIndex = 2;
             this.LBL_VENDEDOR.Text = "Vendedor";
             // 
             // TXT_VENDEDOR
             // 
-            this.TXT_VENDEDOR.Location = new System.Drawing.Point(288, 13);
+            this.TXT_VENDEDOR.Location = new System.Drawing.Point(384, 22);
+            this.TXT_VENDEDOR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TXT_VENDEDOR.Name = "TXT_VENDEDOR";
             this.TXT_VENDEDOR.ReadOnly = true;
-            this.TXT_VENDEDOR.Size = new System.Drawing.Size(160, 20);
+            this.TXT_VENDEDOR.Size = new System.Drawing.Size(212, 24);
             this.TXT_VENDEDOR.TabIndex = 3;
             // 
             // LBL_CLIENTE
             // 
             this.LBL_CLIENTE.AutoSize = true;
-            this.LBL_CLIENTE.Location = new System.Drawing.Point(5, 60);
+            this.LBL_CLIENTE.Location = new System.Drawing.Point(7, 84);
+            this.LBL_CLIENTE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBL_CLIENTE.Name = "LBL_CLIENTE";
-            this.LBL_CLIENTE.Size = new System.Drawing.Size(39, 13);
+            this.LBL_CLIENTE.Size = new System.Drawing.Size(53, 18);
             this.LBL_CLIENTE.TabIndex = 4;
             this.LBL_CLIENTE.Text = "Cliente";
             // 
             // TXT_CLIENTE
             // 
-            this.TXT_CLIENTE.Location = new System.Drawing.Point(46, 53);
+            this.TXT_CLIENTE.Location = new System.Drawing.Point(61, 78);
+            this.TXT_CLIENTE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TXT_CLIENTE.Multiline = true;
             this.TXT_CLIENTE.Name = "TXT_CLIENTE";
             this.TXT_CLIENTE.ReadOnly = true;
-            this.TXT_CLIENTE.Size = new System.Drawing.Size(114, 20);
+            this.TXT_CLIENTE.Size = new System.Drawing.Size(151, 24);
             this.TXT_CLIENTE.TabIndex = 5;
             // 
             // Venta
             // 
+            this.Venta.BackColor = System.Drawing.Color.LavenderBlush;
             this.Venta.Controls.Add(this.TXT_CLIENTE);
             this.Venta.Controls.Add(this.LBL_CLIENTE);
             this.Venta.Controls.Add(this.TXT_VENDEDOR);
             this.Venta.Controls.Add(this.LBL_VENDEDOR);
             this.Venta.Controls.Add(this.TXT_FECHA);
             this.Venta.Controls.Add(this.LBL_FECHA);
-            this.Venta.Location = new System.Drawing.Point(13, 14);
+            this.Venta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Venta.Location = new System.Drawing.Point(17, 17);
+            this.Venta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Venta.Name = "Venta";
-            this.Venta.Size = new System.Drawing.Size(508, 105);
+            this.Venta.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Venta.Size = new System.Drawing.Size(677, 129);
             this.Venta.TabIndex = 6;
             this.Venta.TabStop = false;
             this.Venta.Text = "Venta";
@@ -116,6 +126,7 @@
             // 
             // DGV_REPORTE
             // 
+            this.DGV_REPORTE.BackgroundColor = System.Drawing.Color.White;
             this.DGV_REPORTE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_REPORTE.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Producto,
@@ -123,47 +134,68 @@
             this.P_Unitario,
             this.Descuento,
             this.Total});
-            this.DGV_REPORTE.Location = new System.Drawing.Point(10, 138);
+            this.DGV_REPORTE.Location = new System.Drawing.Point(13, 154);
+            this.DGV_REPORTE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DGV_REPORTE.Name = "DGV_REPORTE";
             this.DGV_REPORTE.ReadOnly = true;
-            this.DGV_REPORTE.Size = new System.Drawing.Size(545, 228);
+            this.DGV_REPORTE.RowHeadersWidth = 51;
+            this.DGV_REPORTE.Size = new System.Drawing.Size(681, 281);
             this.DGV_REPORTE.TabIndex = 7;
+            this.DGV_REPORTE.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_REPORTE_CellContentClick);
             this.DGV_REPORTE.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_REPORTE_CellMouseDoubleClick);
             // 
             // Producto
             // 
             this.Producto.HeaderText = "Producto";
+            this.Producto.MinimumWidth = 6;
             this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Width = 125;
             // 
             // Cantidad
             // 
             this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 6;
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 125;
             // 
             // P_Unitario
             // 
             this.P_Unitario.HeaderText = "P_Unitario";
+            this.P_Unitario.MinimumWidth = 6;
             this.P_Unitario.Name = "P_Unitario";
+            this.P_Unitario.ReadOnly = true;
+            this.P_Unitario.Width = 125;
             // 
             // Descuento
             // 
             this.Descuento.HeaderText = "Descuento";
+            this.Descuento.MinimumWidth = 6;
             this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            this.Descuento.Width = 125;
             // 
             // Total
             // 
             this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
             this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 125;
             // 
             // FormReporte
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 450);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(706, 447);
             this.Controls.Add(this.DGV_REPORTE);
             this.Controls.Add(this.Venta);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormReporte";
             this.Text = "FormReporte";
+            this.Load += new System.EventHandler(this.FormReporte_Load);
             this.Venta.ResumeLayout(false);
             this.Venta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_REPORTE)).EndInit();

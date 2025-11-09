@@ -27,16 +27,6 @@ namespace SysLibreria
             Formreporte = formReporte;
         }
 
-
-       
-       
-      
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
        
         
 
@@ -117,16 +107,23 @@ namespace SysLibreria
 
         private void dgvVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
 
-            if (dgvVentas.Rows[e.RowIndex].Selected)
+            if (e.RowIndex >= 0)
             {
-                Formreporte.TXT_FECHA.Text = dgvVentas.Rows[e.RowIndex].Cells[1].Value.ToString();
-                Formreporte.TXT_CLIENTE.Text = dgvVentas.Rows[e.RowIndex].Cells[2].Value.ToString();
-                Formreporte.TXT_VENDEDOR.Text = dgvVentas.Rows[e.RowIndex].Cells[3].Value.ToString();
-                this.Close();
+
+                if (e.RowIndex >= 0)
+                {
+                    int idVenta = Convert.ToInt32(dgvVentas.Rows[e.RowIndex].Cells["IdVenta"].Value);
+                    FormReporte frm = new FormReporte(idVenta);
+                    frm.ShowDialog();
+                }
             }
-           
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

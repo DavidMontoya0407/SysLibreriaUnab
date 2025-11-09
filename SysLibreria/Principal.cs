@@ -35,7 +35,7 @@ namespace SysLibreria
             CB_MENU.Items.Add("ROLES");
             CB_MENU.Items.Add("USUARIOS");
             CB_MENU.Items.Add("CLIENTES");
-            CB_MENU.Items.Add("VENTAS");
+            
 
             CB_MENU.SelectedIndex = -1;
 
@@ -48,9 +48,10 @@ namespace SysLibreria
 
 
 
-
+            CBFactura.Items.Clear();
             CBFactura.Items.Add("--Facturas--");
             CBFactura.Items.Add("FACTURA");
+            CBFactura.Items.Add("VENTAS");
             CBFactura.SelectedIndex = 0;
 
 
@@ -76,11 +77,7 @@ namespace SysLibreria
                     frmClientes.ShowDialog(this);
                     break;
 
-                case "VENTAS":
-                    FrmVentas frmVentas = new FrmVentas();
-                    frmVentas.StartPosition = FormStartPosition.CenterScreen;
-                    frmVentas.ShowDialog(this);
-                    break;
+               
 
                 default:
                     break;
@@ -125,14 +122,26 @@ namespace SysLibreria
 
         private void CBFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CBFactura.SelectedItem != null && CBFactura.SelectedItem.ToString() == "FACTURA")
+            switch (CBFactura.SelectedItem.ToString())
             {
-               
-                Factura frm = new Factura();
-                frm.Show();
-                CBFactura.SelectedIndex = -1;
+                case "FACTURA":
+                    Factura frm = new Factura(this);
+                    frm.ShowDialog();
+                    break;
+
+                case "VENTAS":
+                    FrmVentas frmventa = new FrmVentas();
+                    frmventa.ShowDialog(this);
+                    break;
+
             }
+              
+
+               
+                CBFactura.SelectedIndex = 0;
+            
         }
     }
+    
 }
 
