@@ -307,6 +307,9 @@ namespace SysLibreria
 
         }
 
-        
+        private void cbProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
