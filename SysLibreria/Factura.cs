@@ -381,6 +381,21 @@ namespace SysLibreria
                             Total = decimal.Parse(fila.Cells[4].Value.ToString())
                         };
                         DB.DetalleVenta.Add(detalle);
+
+                        var producto = DB.Producto.FirstOrDefault(p => p.IdProducto == detalle.IdProducto);
+                        if (producto != null)
+                        {
+                            if (producto.Stock >= detalle.Cantidad)
+                            {
+                                producto.Stock -= detalle.Cantidad;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"No hay suficiente stock para el producto '{producto.Nombre}'.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return false;
+                            }
+                        }
+
                     }
                     DB.SaveChanges();
                 }
