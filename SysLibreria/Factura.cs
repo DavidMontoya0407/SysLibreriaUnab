@@ -133,12 +133,14 @@ namespace SysLibreria
                 {
                     int cantidad = frm.Cantidad;
 
+                    decimal desc = 0;
+
                     int nuevaFila = DGV_DVENTA.Rows.Add();
 
                     DGV_DVENTA.Rows[nuevaFila].Cells[0].Value = filaProducto.Cells[1].Value; 
                     DGV_DVENTA.Rows[nuevaFila].Cells[1].Value = cantidad; 
                     DGV_DVENTA.Rows[nuevaFila].Cells[2].Value = filaProducto.Cells[3].Value; 
-
+                    DGV_DVENTA.Rows[nuevaFila].Cells[3].Value = desc;
                     decimal precio = Convert.ToDecimal(filaProducto.Cells[3].Value);
                     decimal subtotalFila = precio * cantidad;
                     DGV_DVENTA.Rows[nuevaFila].Cells[4].Value = subtotalFila;
@@ -212,8 +214,27 @@ namespace SysLibreria
             CalcularCambio();
         }
 
+        private void DGV_DVENTA_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            const int INDICE_COLUMNA_DESCUENTO = 2;
 
+            if (e.RowIndex >= 0 && e.ColumnIndex == INDICE_COLUMNA_DESCUENTO)
+            {
+                using (FormDescuento frmDescuento = new FormDescuento())
+                {
+                    if (frmDescuento.ShowDialog() == DialogResult.OK)
+                    {
+                        decimal descuento = frmDescuento.Descuento;
+                        DGV_DVENTA.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = descuento;
+                    }
+                    else
+                    {
+                        DGV_DVENTA.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = 0;
+                    }
+                }
+            }
+        }
 
-
+         
     }
 }

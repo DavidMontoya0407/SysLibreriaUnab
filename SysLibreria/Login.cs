@@ -72,7 +72,7 @@ namespace SysLibreria
                 {
                    
                     Principal.NombreUsuario = user.NomUsuario;
-
+                    SesionActual.IdUsuario = user.IdUsuario;
                     Principal frm = new Principal();
                     frm.Show();
 

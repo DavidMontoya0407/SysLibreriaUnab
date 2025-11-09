@@ -378,6 +378,7 @@
             this.DGV_DVENTA.ReadOnly = true;
             this.DGV_DVENTA.Size = new System.Drawing.Size(384, 168);
             this.DGV_DVENTA.TabIndex = 26;
+            this.DGV_DVENTA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_DVENTA_CellClick);
             // 
             // Producto
             // 
