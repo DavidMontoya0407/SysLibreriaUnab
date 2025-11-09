@@ -64,6 +64,7 @@
             this.PUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdProucto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LBL_TOTAL = new System.Windows.Forms.Label();
             this.TXT_TOTAL = new System.Windows.Forms.TextBox();
@@ -378,7 +379,8 @@
             this.Cantidad,
             this.PUnitario,
             this.Descuento,
-            this.Total});
+            this.Total,
+            this.IdProucto});
             this.DGV_DVENTA.Location = new System.Drawing.Point(8, 22);
             this.DGV_DVENTA.Name = "DGV_DVENTA";
             this.DGV_DVENTA.ReadOnly = true;
@@ -421,6 +423,13 @@
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             this.Total.Width = 50;
+            // 
+            // IdProucto
+            // 
+            this.IdProucto.HeaderText = "IdProucto";
+            this.IdProucto.Name = "IdProucto";
+            this.IdProucto.ReadOnly = true;
+            this.IdProucto.Visible = false;
             // 
             // groupBox5
             // 
@@ -492,6 +501,7 @@
             this.BTN_GUARDAR.TabIndex = 34;
             this.BTN_GUARDAR.Text = "Guardar e imprimir";
             this.BTN_GUARDAR.UseVisualStyleBackColor = true;
+            this.BTN_GUARDAR.Click += new System.EventHandler(this.BTN_GUARDAR_Click);
             // 
             // BTN_SALIR
             // 
@@ -509,26 +519,26 @@
             this.editarCantidadToolStripMenuItem,
             this.editarDescuentoToolStripMenuItem});
             this.cmsVenta.Name = "cmsVenta";
-            this.cmsVenta.Size = new System.Drawing.Size(181, 92);
+            this.cmsVenta.Size = new System.Drawing.Size(170, 70);
             // 
             // eliminarProductoToolStripMenuItem
             // 
             this.eliminarProductoToolStripMenuItem.Name = "eliminarProductoToolStripMenuItem";
-            this.eliminarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarProductoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.eliminarProductoToolStripMenuItem.Text = "Eliminar producto";
             this.eliminarProductoToolStripMenuItem.Click += new System.EventHandler(this.eliminarProductoToolStripMenuItem_Click);
             // 
             // editarCantidadToolStripMenuItem
             // 
             this.editarCantidadToolStripMenuItem.Name = "editarCantidadToolStripMenuItem";
-            this.editarCantidadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarCantidadToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.editarCantidadToolStripMenuItem.Text = "Editar cantidad";
             this.editarCantidadToolStripMenuItem.Click += new System.EventHandler(this.editarCantidadToolStripMenuItem_Click);
             // 
             // editarDescuentoToolStripMenuItem
             // 
             this.editarDescuentoToolStripMenuItem.Name = "editarDescuentoToolStripMenuItem";
-            this.editarDescuentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarDescuentoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.editarDescuentoToolStripMenuItem.Text = "Editar descuento";
             this.editarDescuentoToolStripMenuItem.Click += new System.EventHandler(this.editarDescuentoToolStripMenuItem_Click);
             // 
@@ -595,10 +605,6 @@
         private System.Windows.Forms.Label LBL_CODIGO;
         private System.Windows.Forms.TextBox TXT_CODIGO;
         private System.Windows.Forms.DataGridView DGV_PRODUCTOS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView DGV_DVENTA;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -611,14 +617,19 @@
         private System.Windows.Forms.Button BTN_GUARDAR;
         private System.Windows.Forms.Button BTN_SALIR;
         public System.Windows.Forms.TextBox TXT_VENDEDOR;
+        private System.Windows.Forms.ContextMenuStrip cmsVenta;
+        private System.Windows.Forms.ToolStripMenuItem eliminarProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarCantidadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarDescuentoToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.ContextMenuStrip cmsVenta;
-        private System.Windows.Forms.ToolStripMenuItem eliminarProductoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarCantidadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarDescuentoToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdProucto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
     }
 }

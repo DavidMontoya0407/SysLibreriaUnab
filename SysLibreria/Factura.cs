@@ -12,30 +12,32 @@ namespace SysLibreria
 {
     public partial class Factura : Form
     {
-     List<Producto> listaProductos = new List<Producto>();
+        List<Producto> listaProductos = new List<Producto>();
         List<Factura> listaFacturas = new List<Factura>();
         List<Usuario> usuarios = new List<Usuario>();
+
+        
 
         public Factura()
         {
             InitializeComponent();
         }
 
-       
+
 
         public Factura(Principal principal)
         {
             InitializeComponent();
         }
 
-        
+
 
         private void TXT_BPRUCTO_TextChanged(object sender, EventArgs e)
         {
             DGV_PRODUCTOS.Rows.Clear();
-            if(!string.IsNullOrWhiteSpace(TXT_BPRUCTO.Text))
+            if (!string.IsNullOrWhiteSpace(TXT_BPRUCTO.Text))
             {
-                foreach(var prod in listaProductos.Where(prod => ($"{prod.Nombre}").ToUpper().Trim().Contains(TXT_BPRUCTO.Text.ToUpper().Trim())))
+                foreach (var prod in listaProductos.Where(prod => ($"{prod.Nombre}").ToUpper().Trim().Contains(TXT_BPRUCTO.Text.ToUpper().Trim())))
                 {
                     DGV_PRODUCTOS.Rows.Add(prod.IdProducto, prod.Nombre, prod.Descripcion, prod.Precio);
                 }
@@ -92,7 +94,7 @@ namespace SysLibreria
             cmsVenta.Items.Add("Editar cantidad", null, editarCantidadToolStripMenuItem_Click);
             cmsVenta.Items.Add("Eliminar producto", null, eliminarProductoToolStripMenuItem_Click);
 
-           
+
             DGV_DVENTA.ContextMenuStrip = cmsVenta;
         }
 
@@ -103,15 +105,15 @@ namespace SysLibreria
 
         private void DGV_PRODUCTOS_CellContentClick(object sender, EventArgs e)
         {
-            
+
         }
 
         private void TXT_CODIGO_TextChanged(object sender, EventArgs e)
         {
             DGV_PRODUCTOS.Rows.Clear();
-            if(!string.IsNullOrWhiteSpace(TXT_CODIGO.Text))
+            if (!string.IsNullOrWhiteSpace(TXT_CODIGO.Text))
             {
-                foreach(var prod in listaProductos.Where(prod => ($"{prod.IdProducto}").ToUpper().Trim().Contains(TXT_CODIGO.Text.ToUpper().Trim())))
+                foreach (var prod in listaProductos.Where(prod => ($"{prod.IdProducto}").ToUpper().Trim().Contains(TXT_CODIGO.Text.ToUpper().Trim())))
                 {
                     DGV_PRODUCTOS.Rows.Add(prod.IdProducto, prod.Nombre, prod.Descripcion, prod.Precio);
                 }
@@ -146,15 +148,15 @@ namespace SysLibreria
 
                     int nuevaFila = DGV_DVENTA.Rows.Add();
                     decimal precio = Math.Round(Convert.ToDecimal(filaProducto.Cells[3].Value), 2);
-                    DGV_DVENTA.Rows[nuevaFila].Cells[0].Value = filaProducto.Cells[1].Value; 
+                    DGV_DVENTA.Rows[nuevaFila].Cells[0].Value = filaProducto.Cells[1].Value;
                     DGV_DVENTA.Rows[nuevaFila].Cells[1].Value = cantidad;
                     DGV_DVENTA.Rows[nuevaFila].Cells[2].Value = precio;
                     DGV_DVENTA.Rows[nuevaFila].Cells[3].Value = desc;
-                    
+                    DGV_DVENTA.Rows[nuevaFila].Cells[5].Value = filaProducto.Cells[0].Value;
                     decimal subtotalFila = precio * cantidad;
                     DGV_DVENTA.Rows[nuevaFila].Cells[4].Value = subtotalFila.ToString("F2");
 
-                   
+
                     CalcularTotales();
                 }
             }
@@ -165,50 +167,50 @@ namespace SysLibreria
         {
             decimal subtotalGeneral = 0;
 
-          
+
             foreach (DataGridViewRow fila in DGV_DVENTA.Rows)
             {
                 if (fila.Cells[4].Value != null)
                     subtotalGeneral += Convert.ToDecimal(fila.Cells[4].Value);
             }
 
-          
+
             decimal iva = subtotalGeneral * 0.13m;
 
-           
+
             decimal total = subtotalGeneral + iva;
 
-         
+
             TXT_SUBTOTAL.Text = subtotalGeneral.ToString("F2");
             TXT_IVA.Text = iva.ToString("F2");
             TXT_TOTAL.Text = total.ToString("F2");
 
-           
+
         }
 
         private void CalcularCambio()
         {
             try
             {
-           
+
                 decimal total = 0;
                 decimal monto = 0;
 
-              
+
                 if (!decimal.TryParse(TXT_TOTAL.Text, out total))
                     total = 0;
 
                 if (!decimal.TryParse(TXT_MONTO.Text, out monto))
                     monto = 0;
 
-               
+
                 decimal cambio = monto - total;
 
-              
+
                 if (cambio < 0)
                     cambio = 0;
 
-               
+
                 TXT_CAMBIO.Text = cambio.ToString("F2");
             }
             catch (Exception ex)
@@ -249,7 +251,7 @@ namespace SysLibreria
             if (DGV_DVENTA.CurrentRow != null)
             {
                 DGV_DVENTA.Rows.Remove(DGV_DVENTA.CurrentRow);
-                CalcularTotales(); 
+                CalcularTotales();
             }
         }
 
@@ -263,10 +265,10 @@ namespace SysLibreria
                     {
                         int nuevaCantidad = frm.Cantidad;
 
-                       
+
                         DGV_DVENTA.CurrentRow.Cells[1].Value = nuevaCantidad;
 
-                   
+
                         decimal precio = Convert.ToDecimal(DGV_DVENTA.CurrentRow.Cells[2].Value);
                         DGV_DVENTA.CurrentRow.Cells[4].Value = precio * nuevaCantidad;
 
@@ -278,7 +280,7 @@ namespace SysLibreria
 
         private void DGV_DVENTA_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+
         }
 
         private void editarDescuentoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -289,35 +291,116 @@ namespace SysLibreria
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        decimal descuento = frm.Descuento; 
+                        decimal descuento = frm.Descuento;
 
-                        
+
                         DataGridViewRow fila = DGV_DVENTA.CurrentRow;
 
-                        decimal cantidad = Convert.ToDecimal(fila.Cells[1].Value); 
-                        decimal precioUnit = Convert.ToDecimal(fila.Cells[2].Value); 
+                        decimal cantidad = Convert.ToDecimal(fila.Cells[1].Value);
+                        decimal precioUnit = Convert.ToDecimal(fila.Cells[2].Value);
 
-                   
+
                         decimal subtotal = cantidad * precioUnit;
 
-                       
+
                         decimal montoDescuento = subtotal * (descuento / 100);
 
-                        
+
                         decimal total = subtotal - montoDescuento;
 
-                        
-                        fila.Cells[3].Value = descuento.ToString("F2"); 
-                        fila.Cells[4].Value = total.ToString("F2");     
 
-                        
+                        fila.Cells[3].Value = descuento.ToString("F2");
+                        fila.Cells[4].Value = total.ToString("F2");
+
+
                         CalcularTotales();
                     }
                 }
             }
         }
 
+        private bool validarCampos(bool nuevo)
+        {
+            if (string.IsNullOrWhiteSpace(TXT_NOMBRE_CLIENTE.Text))
+            {
+                MessageBox.Show("El nombre del cliente es obligatorio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(TXT_DIRECCION.Text))
+            {
+                MessageBox.Show("La dirección del cliente es obligatoria.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(TXT_DOCUMENTO.Text))
+            {
+                MessageBox.Show("El documento del cliente es obligatorio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
+            return true;
 
+        }
+
+        public bool agregarfactura()
+        {
+            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            try
+            {
+              
+                using (BDLIBRERIAEntities DB = new BDLIBRERIAEntities())
+                {
+                    Cliente cliente = new Cliente();
+                    {
+                        cliente.Nombre = TXT_NOMBRE_CLIENTE.Text.Trim();
+                        cliente.Documento = int.Parse(TXT_DOCUMENTO.Text);
+                        cliente.Direccion = TXT_DIRECCION.Text.Trim();
+                    }
+                    DB.Cliente.Add(cliente);
+                    DB.SaveChanges();
+                    Venta nuevaVenta = new Venta
+                    {
+                                    
+                        IdUsuario = SesionActual.IdUsuario,
+                        IdCliente = cliente.IdCliente,
+                        Fecha = DateTime.Now,
+                        NumeroVenta = timestamp.GetHashCode(),
+                        SubTotal = decimal.Parse(TXT_SUBTOTAL.Text),
+                        Iva = decimal.Parse(TXT_IVA.Text),
+                        Total = decimal.Parse(TXT_TOTAL.Text)
+                    };
+                    DB.Venta.Add(nuevaVenta);
+                    DB.SaveChanges();
+                    foreach (DataGridViewRow fila in DGV_DVENTA.Rows)
+                    {
+                        DetalleVenta detalle = new DetalleVenta
+                        {
+                            IdVenta = nuevaVenta.IdVenta,
+                            IdProducto = int.Parse(fila.Cells[5].Value.ToString()),
+                            Cantidad = int.Parse(fila.Cells[1].Value.ToString()),
+                            Descuento = decimal.Parse(fila.Cells[3].Value.ToString()),
+                            Total = decimal.Parse(fila.Cells[4].Value.ToString())
+                        };
+                        DB.DetalleVenta.Add(detalle);
+                    }
+                    DB.SaveChanges();
+                }
+                MessageBox.Show("Factura agregada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+        }
+
+        private void BTN_GUARDAR_Click(object sender, EventArgs e)
+        {
+            if(validarCampos(true))
+            {
+                agregarfactura();
+            }
+        }
     }
 }
