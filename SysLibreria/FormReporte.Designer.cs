@@ -41,6 +41,8 @@
             this.P_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblVenta = new System.Windows.Forms.Label();
+            this.txtIdVenta = new System.Windows.Forms.TextBox();
             this.Venta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_REPORTE)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +60,7 @@
             // TXT_FECHA
             // 
             this.TXT_FECHA.Location = new System.Drawing.Point(61, 25);
-            this.TXT_FECHA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TXT_FECHA.Margin = new System.Windows.Forms.Padding(4);
             this.TXT_FECHA.Multiline = true;
             this.TXT_FECHA.Name = "TXT_FECHA";
             this.TXT_FECHA.ReadOnly = true;
@@ -78,7 +80,7 @@
             // TXT_VENDEDOR
             // 
             this.TXT_VENDEDOR.Location = new System.Drawing.Point(384, 22);
-            this.TXT_VENDEDOR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TXT_VENDEDOR.Margin = new System.Windows.Forms.Padding(4);
             this.TXT_VENDEDOR.Name = "TXT_VENDEDOR";
             this.TXT_VENDEDOR.ReadOnly = true;
             this.TXT_VENDEDOR.Size = new System.Drawing.Size(212, 24);
@@ -97,7 +99,7 @@
             // TXT_CLIENTE
             // 
             this.TXT_CLIENTE.Location = new System.Drawing.Point(61, 78);
-            this.TXT_CLIENTE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TXT_CLIENTE.Margin = new System.Windows.Forms.Padding(4);
             this.TXT_CLIENTE.Multiline = true;
             this.TXT_CLIENTE.Name = "TXT_CLIENTE";
             this.TXT_CLIENTE.ReadOnly = true;
@@ -107,6 +109,8 @@
             // Venta
             // 
             this.Venta.BackColor = System.Drawing.Color.LavenderBlush;
+            this.Venta.Controls.Add(this.txtIdVenta);
+            this.Venta.Controls.Add(this.lblVenta);
             this.Venta.Controls.Add(this.TXT_CLIENTE);
             this.Venta.Controls.Add(this.LBL_CLIENTE);
             this.Venta.Controls.Add(this.TXT_VENDEDOR);
@@ -115,9 +119,9 @@
             this.Venta.Controls.Add(this.LBL_FECHA);
             this.Venta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Venta.Location = new System.Drawing.Point(17, 17);
-            this.Venta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Venta.Margin = new System.Windows.Forms.Padding(4);
             this.Venta.Name = "Venta";
-            this.Venta.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Venta.Padding = new System.Windows.Forms.Padding(4);
             this.Venta.Size = new System.Drawing.Size(677, 129);
             this.Venta.TabIndex = 6;
             this.Venta.TabStop = false;
@@ -135,13 +139,13 @@
             this.Descuento,
             this.Total});
             this.DGV_REPORTE.Location = new System.Drawing.Point(13, 154);
-            this.DGV_REPORTE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGV_REPORTE.Margin = new System.Windows.Forms.Padding(4);
             this.DGV_REPORTE.Name = "DGV_REPORTE";
             this.DGV_REPORTE.ReadOnly = true;
             this.DGV_REPORTE.RowHeadersWidth = 51;
             this.DGV_REPORTE.Size = new System.Drawing.Size(681, 281);
             this.DGV_REPORTE.TabIndex = 7;
-            this.DGV_REPORTE.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_REPORTE_CellContentClick);
+
             this.DGV_REPORTE.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_REPORTE_CellMouseDoubleClick);
             // 
             // Producto
@@ -184,6 +188,22 @@
             this.Total.ReadOnly = true;
             this.Total.Width = 125;
             // 
+            // lblVenta
+            // 
+            this.lblVenta.AutoSize = true;
+            this.lblVenta.Location = new System.Drawing.Point(305, 84);
+            this.lblVenta.Name = "lblVenta";
+            this.lblVenta.Size = new System.Drawing.Size(63, 18);
+            this.lblVenta.TabIndex = 6;
+            this.lblVenta.Text = "ID Venta";
+            // 
+            // txtIdVenta
+            // 
+            this.txtIdVenta.Location = new System.Drawing.Point(384, 78);
+            this.txtIdVenta.Name = "txtIdVenta";
+            this.txtIdVenta.Size = new System.Drawing.Size(212, 24);
+            this.txtIdVenta.TabIndex = 7;
+            // 
             // FormReporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -192,7 +212,7 @@
             this.ClientSize = new System.Drawing.Size(706, 447);
             this.Controls.Add(this.DGV_REPORTE);
             this.Controls.Add(this.Venta);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReporte";
             this.Text = "FormReporte";
             this.Load += new System.EventHandler(this.FormReporte_Load);
@@ -218,5 +238,7 @@
         public System.Windows.Forms.TextBox TXT_FECHA;
         public System.Windows.Forms.TextBox TXT_VENDEDOR;
         public System.Windows.Forms.TextBox TXT_CLIENTE;
+        private System.Windows.Forms.TextBox txtIdVenta;
+        private System.Windows.Forms.Label lblVenta;
     }
 }

@@ -27,9 +27,8 @@ namespace SysLibreria
         {
             InitializeComponent();
             this.idVenta = idVenta;
-
+            txtIdVenta.Text = idVenta.ToString(); 
         }
-
 
         private void DGV_REPORTE_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -78,7 +77,7 @@ namespace SysLibreria
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la venta con el ID especificado.");
+                        MessageBox.Show("No se encontró la venta con el ID.");
                     }
                 }
             }
@@ -89,24 +88,7 @@ namespace SysLibreria
 
         }
 
-        private void DGV_REPORTE_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cadenaConexion = "tu_cadena_de_conexion";
-            string query = "SELECT p.Nombre AS Producto, dv.Cantidad, dv.PrecioUnitario, dv.Descuento, dv.Total " +
-                           "FROM DetalleVenta dv " +
-                           "JOIN Productos p ON dv.IdProducto = p.IdProducto " +
-                           "WHERE dv.IdVenta = @idVenta";
-
-            using (SqlConnection con = new SqlConnection(cadenaConexion))
-            using (SqlCommand cmd = new SqlCommand(query, con))
-            {
-                cmd.Parameters.AddWithValue("@idVenta", idVenta); 
-                con.Open();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                DGV_REPORTE.DataSource = dt;
-            }
-        }
+      
+        
     }
 }
