@@ -395,12 +395,34 @@ namespace SysLibreria
 
         }
 
+        private void limpiarCampos()
+        {
+            TXT_NOMBRE_CLIENTE.Clear();
+            TXT_DOCUMENTO.Clear();
+            TXT_DIRECCION.Clear();
+            DGV_DVENTA.Rows.Clear();
+            TXT_SUBTOTAL.Clear();
+            TXT_IVA.Clear();
+            TXT_TOTAL.Clear();
+            TXT_MONTO.Clear();
+            TXT_CAMBIO.Clear();
+        }
+
         private void BTN_GUARDAR_Click(object sender, EventArgs e)
         {
             if(validarCampos(true))
             {
-                agregarfactura();
+                if(agregarfactura())
+                {
+                    limpiarCampos();
+                }
             }
+        }
+
+        private void BTN_SALIR_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

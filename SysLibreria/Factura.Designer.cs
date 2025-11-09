@@ -511,6 +511,7 @@
             this.BTN_SALIR.TabIndex = 35;
             this.BTN_SALIR.Text = "Salir";
             this.BTN_SALIR.UseVisualStyleBackColor = true;
+            this.BTN_SALIR.Click += new System.EventHandler(this.BTN_SALIR_Click);
             // 
             // cmsVenta
             // 
