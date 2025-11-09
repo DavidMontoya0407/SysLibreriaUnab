@@ -67,9 +67,12 @@ namespace SysLibreria
             {
                 if (autenticar(true)) 
                 {
-                  Principal principalForm = new Principal(this);
-                    principalForm.Show();
-                }
+                  //Principal principalForm = new Principal(this);
+                  //  principalForm.Show();
+
+                        Factura facturaForm = new Factura();
+                        facturaForm.Show();
+                    }
                 else
                 {
                     MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

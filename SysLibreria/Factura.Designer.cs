@@ -57,9 +57,10 @@
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGV_DVENTA = new System.Windows.Forms.DataGridView();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -76,7 +77,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PRODUCTOS)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_DVENTA)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,6 +216,7 @@
             this.TXT_MONTO.Name = "TXT_MONTO";
             this.TXT_MONTO.Size = new System.Drawing.Size(105, 20);
             this.TXT_MONTO.TabIndex = 15;
+            this.TXT_MONTO.TextChanged += new System.EventHandler(this.TXT_MONTO_TextChanged);
             // 
             // TB_TP
             // 
@@ -316,6 +318,7 @@
             this.DGV_PRODUCTOS.Size = new System.Drawing.Size(364, 138);
             this.DGV_PRODUCTOS.TabIndex = 24;
             this.DGV_PRODUCTOS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_PRODUCTOS_CellContentClick);
+            this.DGV_PRODUCTOS.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_PRODUCTOS_CellMouseDoubleClick);
             // 
             // Cod
             // 
@@ -359,28 +362,29 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Producto";
             // 
-            // dataGridView1
+            // DGV_DVENTA
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DGV_DVENTA.AllowUserToAddRows = false;
+            this.DGV_DVENTA.AllowUserToDeleteRows = false;
+            this.DGV_DVENTA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_DVENTA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Producto,
             this.Cantidad,
+            this.PUnitario,
             this.Descuento,
             this.Total});
-            this.dataGridView1.Location = new System.Drawing.Point(8, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(384, 168);
-            this.dataGridView1.TabIndex = 26;
+            this.DGV_DVENTA.Location = new System.Drawing.Point(8, 22);
+            this.DGV_DVENTA.Name = "DGV_DVENTA";
+            this.DGV_DVENTA.ReadOnly = true;
+            this.DGV_DVENTA.Size = new System.Drawing.Size(384, 168);
+            this.DGV_DVENTA.TabIndex = 26;
             // 
             // Producto
             // 
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
-            this.Producto.Width = 165;
+            this.Producto.Width = 130;
             // 
             // Cantidad
             // 
@@ -388,6 +392,13 @@
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
             this.Cantidad.Width = 50;
+            // 
+            // PUnitario
+            // 
+            this.PUnitario.HeaderText = "PUnitario";
+            this.PUnitario.Name = "PUnitario";
+            this.PUnitario.ReadOnly = true;
+            this.PUnitario.Width = 40;
             // 
             // Descuento
             // 
@@ -405,7 +416,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.Controls.Add(this.DGV_DVENTA);
             this.groupBox5.Location = new System.Drawing.Point(451, 188);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(406, 200);
@@ -513,7 +524,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PRODUCTOS)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_DVENTA)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -532,7 +543,6 @@
         private System.Windows.Forms.TextBox TXT_DOCUMENTO;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label LBL_VENDEDOR;
-        private System.Windows.Forms.TextBox TXT_VENDEDOR;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label LBL_TPAGO;
         private System.Windows.Forms.Label LBL_MONTO;
@@ -551,12 +561,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGV_DVENTA;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.Label LBL_TOTAL;
         private System.Windows.Forms.TextBox TXT_TOTAL;
         private System.Windows.Forms.Label LBL_SUBTOTAL;
@@ -565,5 +571,11 @@
         private System.Windows.Forms.TextBox TXT_IVA;
         private System.Windows.Forms.Button BTN_GUARDAR;
         private System.Windows.Forms.Button BTN_SALIR;
+        public System.Windows.Forms.TextBox TXT_VENDEDOR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     }
 }
