@@ -16,7 +16,7 @@ namespace SysLibreria
     public partial class FormReporte : Form
     {
         private int idVenta;
-
+        List<DetalleVenta> listaDetalleVenta = new List<DetalleVenta>();
         public FormReporte()
         {
             InitializeComponent();
@@ -42,18 +42,43 @@ namespace SysLibreria
 
         private void FormReporte_Load(object sender, EventArgs e)
         {
+            DGV_REPORTE.Rows.Clear();
+           
+
+
+            using (BDLIBRERIAEntities DB = new BDLIBRERIAEntities())
+            {
+                
+                listaDetalleVenta = DB.DetalleVenta
+                                     .Include("Producto")
+                                     .Where(dv => dv.IdVenta == idVenta)
+                                     .ToList();
+
+                foreach (var dt in listaDetalleVenta)
+                {
+                    DGV_REPORTE.Rows.Add(dt.Producto.Nombre, dt.Cantidad, dt.Producto.Precio.ToString("F2"),  dt.Descuento, dt.Total.ToString("F2"));
+                }
+
+
+            }
+
             CargarDatosVenta();
+
+            
+
         }
+
+
         private void CargarDatosVenta()
         {
             try
             {
-                
+
                 string efConnectionString = ConfigurationManager.ConnectionStrings["BDLIBRERIAEntities"].ConnectionString;
                 var entityBuilder = new EntityConnectionStringBuilder(efConnectionString);
                 string sqlConnectionString = entityBuilder.ProviderConnectionString;
 
-               
+
                 string query = @"
             SELECT v.Fecha, c.Nombre AS Cliente, u.Nombres AS Vendedor
             FROM dbo.Venta v
@@ -88,7 +113,7 @@ namespace SysLibreria
 
         }
 
-      
-        
+
+
     }
 }
