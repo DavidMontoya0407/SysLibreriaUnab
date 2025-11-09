@@ -43,6 +43,13 @@
             this.P_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.Label();
+            this.TXT_SUBTOTAL = new System.Windows.Forms.TextBox();
+            this.LBL_IVA = new System.Windows.Forms.Label();
+            this.TXT_IVA = new System.Windows.Forms.TextBox();
+            this.LBL_TOTAL = new System.Windows.Forms.Label();
+            this.TXT_TOTAL = new System.Windows.Forms.TextBox();
+            this.TXT_SALIR = new System.Windows.Forms.Button();
             this.Venta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_REPORTE)).BeginInit();
             this.SuspendLayout();
@@ -153,7 +160,7 @@
             this.DGV_REPORTE.Name = "DGV_REPORTE";
             this.DGV_REPORTE.ReadOnly = true;
             this.DGV_REPORTE.RowHeadersWidth = 51;
-            this.DGV_REPORTE.Size = new System.Drawing.Size(511, 228);
+            this.DGV_REPORTE.Size = new System.Drawing.Size(511, 156);
             this.DGV_REPORTE.TabIndex = 7;
             this.DGV_REPORTE.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_REPORTE_CellMouseDoubleClick);
             // 
@@ -197,12 +204,80 @@
             this.Total.ReadOnly = true;
             this.Total.Width = 125;
             // 
+            // SubTotal
+            // 
+            this.SubTotal.AutoSize = true;
+            this.SubTotal.Location = new System.Drawing.Point(18, 290);
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.Size = new System.Drawing.Size(50, 13);
+            this.SubTotal.TabIndex = 8;
+            this.SubTotal.Text = "SubTotal";
+            // 
+            // TXT_SUBTOTAL
+            // 
+            this.TXT_SUBTOTAL.Location = new System.Drawing.Point(74, 287);
+            this.TXT_SUBTOTAL.Name = "TXT_SUBTOTAL";
+            this.TXT_SUBTOTAL.ReadOnly = true;
+            this.TXT_SUBTOTAL.Size = new System.Drawing.Size(110, 20);
+            this.TXT_SUBTOTAL.TabIndex = 9;
+            // 
+            // LBL_IVA
+            // 
+            this.LBL_IVA.AutoSize = true;
+            this.LBL_IVA.Location = new System.Drawing.Point(190, 290);
+            this.LBL_IVA.Name = "LBL_IVA";
+            this.LBL_IVA.Size = new System.Drawing.Size(24, 13);
+            this.LBL_IVA.TabIndex = 10;
+            this.LBL_IVA.Text = "IVA";
+            // 
+            // TXT_IVA
+            // 
+            this.TXT_IVA.Location = new System.Drawing.Point(220, 287);
+            this.TXT_IVA.Name = "TXT_IVA";
+            this.TXT_IVA.ReadOnly = true;
+            this.TXT_IVA.Size = new System.Drawing.Size(110, 20);
+            this.TXT_IVA.TabIndex = 11;
+            // 
+            // LBL_TOTAL
+            // 
+            this.LBL_TOTAL.AutoSize = true;
+            this.LBL_TOTAL.Location = new System.Drawing.Point(336, 294);
+            this.LBL_TOTAL.Name = "LBL_TOTAL";
+            this.LBL_TOTAL.Size = new System.Drawing.Size(31, 13);
+            this.LBL_TOTAL.TabIndex = 12;
+            this.LBL_TOTAL.Text = "Total";
+            // 
+            // TXT_TOTAL
+            // 
+            this.TXT_TOTAL.Location = new System.Drawing.Point(373, 287);
+            this.TXT_TOTAL.Name = "TXT_TOTAL";
+            this.TXT_TOTAL.ReadOnly = true;
+            this.TXT_TOTAL.Size = new System.Drawing.Size(110, 20);
+            this.TXT_TOTAL.TabIndex = 13;
+            // 
+            // TXT_SALIR
+            // 
+            this.TXT_SALIR.Location = new System.Drawing.Point(315, 324);
+            this.TXT_SALIR.Name = "TXT_SALIR";
+            this.TXT_SALIR.Size = new System.Drawing.Size(186, 32);
+            this.TXT_SALIR.TabIndex = 14;
+            this.TXT_SALIR.Text = " Salir";
+            this.TXT_SALIR.UseVisualStyleBackColor = true;
+            this.TXT_SALIR.Click += new System.EventHandler(this.TXT_SALIR_Click);
+            // 
             // FormReporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(530, 363);
+            this.Controls.Add(this.TXT_SALIR);
+            this.Controls.Add(this.TXT_TOTAL);
+            this.Controls.Add(this.LBL_TOTAL);
+            this.Controls.Add(this.TXT_IVA);
+            this.Controls.Add(this.LBL_IVA);
+            this.Controls.Add(this.TXT_SUBTOTAL);
+            this.Controls.Add(this.SubTotal);
             this.Controls.Add(this.DGV_REPORTE);
             this.Controls.Add(this.Venta);
             this.Name = "FormReporte";
@@ -212,6 +287,7 @@
             this.Venta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_REPORTE)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -232,5 +308,12 @@
         public System.Windows.Forms.TextBox TXT_CLIENTE;
         private System.Windows.Forms.TextBox txtIdVenta;
         private System.Windows.Forms.Label lblVenta;
+        private System.Windows.Forms.Label SubTotal;
+        private System.Windows.Forms.TextBox TXT_SUBTOTAL;
+        private System.Windows.Forms.Label LBL_IVA;
+        private System.Windows.Forms.TextBox TXT_IVA;
+        private System.Windows.Forms.Label LBL_TOTAL;
+        private System.Windows.Forms.TextBox TXT_TOTAL;
+        private System.Windows.Forms.Button TXT_SALIR;
     }
 }

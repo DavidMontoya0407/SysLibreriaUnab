@@ -27,7 +27,8 @@ namespace SysLibreria
         {
             InitializeComponent();
             this.idVenta = idVenta;
-            txtIdVenta.Text = idVenta.ToString(); 
+            txtIdVenta.Text = idVenta.ToString();
+       
         }
 
         private void DGV_REPORTE_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -62,6 +63,8 @@ namespace SysLibreria
 
             }
 
+            
+
             CargarDatosVenta();
 
             
@@ -71,49 +74,33 @@ namespace SysLibreria
 
         private void CargarDatosVenta()
         {
-            try
+            using (BDLIBRERIAEntities DB = new BDLIBRERIAEntities())
             {
+                var venta = DB.Venta
+                    .Include("Cliente")
+                    .Include("Usuario")
+                    .FirstOrDefault(v => v.IdVenta == idVenta);
 
-                string efConnectionString = ConfigurationManager.ConnectionStrings["BDLIBRERIAEntities"].ConnectionString;
-                var entityBuilder = new EntityConnectionStringBuilder(efConnectionString);
-                string sqlConnectionString = entityBuilder.ProviderConnectionString;
-
-
-                string query = @"
-            SELECT v.Fecha, c.Nombre AS Cliente, u.Nombres AS Vendedor
-            FROM dbo.Venta v
-            JOIN dbo.Cliente c ON v.IdCliente = c.IdCliente
-            JOIN dbo.Usuario u ON v.IdUsuario = u.IdUsuario
-            WHERE v.IdVenta = @idVenta";
-
-                using (SqlConnection con = new SqlConnection(sqlConnectionString))
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                if (venta != null)
                 {
-                    cmd.Parameters.AddWithValue("@idVenta", idVenta);
-                    con.Open();
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        TXT_FECHA.Text = reader["Fecha"].ToString();
-                        TXT_CLIENTE.Text = reader["Cliente"].ToString();
-                        TXT_VENDEDOR.Text = reader["Vendedor"].ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la venta con el ID.");
-                    }
+                    TXT_FECHA.Text = venta.Fecha.ToString();
+                    TXT_CLIENTE.Text = venta.Cliente.Nombre;
+                    TXT_VENDEDOR.Text = venta.Usuario.Nombres;
+                    TXT_SUBTOTAL.Text = venta.SubTotal.ToString("F2");
+                    TXT_IVA.Text = venta.Iva.ToString("F2");
+                    TXT_TOTAL.Text = venta.Total.ToString("F2");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la venta con el ID.");
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Error de SQL: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
 
-
-
+        private void TXT_SALIR_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
     }
 }
