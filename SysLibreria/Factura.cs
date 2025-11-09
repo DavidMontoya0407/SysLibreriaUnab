@@ -85,6 +85,15 @@ namespace SysLibreria
                     TXT_VENDEDOR.Text = "Desconocido";
                 }
             }
+
+            ContextMenuStrip cmsVenta = new ContextMenuStrip();
+
+            cmsVenta.Items.Add("Editar descuento", null, editarDescuentoToolStripMenuItem_Click);
+            cmsVenta.Items.Add("Editar cantidad", null, editarCantidadToolStripMenuItem_Click);
+            cmsVenta.Items.Add("Eliminar producto", null, eliminarProductoToolStripMenuItem_Click);
+
+           
+            DGV_DVENTA.ContextMenuStrip = cmsVenta;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -136,14 +145,14 @@ namespace SysLibreria
                     decimal desc = 0;
 
                     int nuevaFila = DGV_DVENTA.Rows.Add();
-
+                    decimal precio = Math.Round(Convert.ToDecimal(filaProducto.Cells[3].Value), 2);
                     DGV_DVENTA.Rows[nuevaFila].Cells[0].Value = filaProducto.Cells[1].Value; 
-                    DGV_DVENTA.Rows[nuevaFila].Cells[1].Value = cantidad; 
-                    DGV_DVENTA.Rows[nuevaFila].Cells[2].Value = filaProducto.Cells[3].Value; 
+                    DGV_DVENTA.Rows[nuevaFila].Cells[1].Value = cantidad;
+                    DGV_DVENTA.Rows[nuevaFila].Cells[2].Value = precio;
                     DGV_DVENTA.Rows[nuevaFila].Cells[3].Value = desc;
-                    decimal precio = Convert.ToDecimal(filaProducto.Cells[3].Value);
+                    
                     decimal subtotalFila = precio * cantidad;
-                    DGV_DVENTA.Rows[nuevaFila].Cells[4].Value = subtotalFila;
+                    DGV_DVENTA.Rows[nuevaFila].Cells[4].Value = subtotalFila.ToString("F2");
 
                    
                     CalcularTotales();
@@ -216,25 +225,99 @@ namespace SysLibreria
 
         private void DGV_DVENTA_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            const int INDICE_COLUMNA_DESCUENTO = 2;
+            //const int INDICE_COLUMNA_DESCUENTO = 2;
 
-            if (e.RowIndex >= 0 && e.ColumnIndex == INDICE_COLUMNA_DESCUENTO)
+            //if (e.RowIndex >= 0 && e.ColumnIndex == INDICE_COLUMNA_DESCUENTO)
+            //{
+            //    using (FormDescuento frmDescuento = new FormDescuento())
+            //    {
+            //        if (frmDescuento.ShowDialog() == DialogResult.OK)
+            //        {
+            //            decimal descuento = frmDescuento.Descuento;
+            //            DGV_DVENTA.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = descuento;
+            //        }
+            //        else
+            //        {
+            //            DGV_DVENTA.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = 0;
+            //        }
+            //    }
+            //}
+        }
+
+        private void eliminarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DGV_DVENTA.CurrentRow != null)
             {
-                using (FormDescuento frmDescuento = new FormDescuento())
+                DGV_DVENTA.Rows.Remove(DGV_DVENTA.CurrentRow);
+                CalcularTotales(); 
+            }
+        }
+
+        private void editarCantidadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DGV_DVENTA.CurrentRow != null)
+            {
+                using (FrmCantidad frm = new FrmCantidad())
                 {
-                    if (frmDescuento.ShowDialog() == DialogResult.OK)
+                    if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        decimal descuento = frmDescuento.Descuento;
-                        DGV_DVENTA.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = descuento;
-                    }
-                    else
-                    {
-                        DGV_DVENTA.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = 0;
+                        int nuevaCantidad = frm.Cantidad;
+
+                       
+                        DGV_DVENTA.CurrentRow.Cells[1].Value = nuevaCantidad;
+
+                   
+                        decimal precio = Convert.ToDecimal(DGV_DVENTA.CurrentRow.Cells[2].Value);
+                        DGV_DVENTA.CurrentRow.Cells[4].Value = precio * nuevaCantidad;
+
+                        CalcularTotales();
                     }
                 }
             }
         }
 
-         
+        private void DGV_DVENTA_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void editarDescuentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DGV_DVENTA.CurrentRow != null)
+            {
+                using (FormDescuento frm = new FormDescuento())
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        decimal descuento = frm.Descuento; 
+
+                        
+                        DataGridViewRow fila = DGV_DVENTA.CurrentRow;
+
+                        decimal cantidad = Convert.ToDecimal(fila.Cells[1].Value); 
+                        decimal precioUnit = Convert.ToDecimal(fila.Cells[2].Value); 
+
+                   
+                        decimal subtotal = cantidad * precioUnit;
+
+                       
+                        decimal montoDescuento = subtotal * (descuento / 100);
+
+                        
+                        decimal total = subtotal - montoDescuento;
+
+                        
+                        fila.Cells[3].Value = descuento.ToString("F2"); 
+                        fila.Cells[4].Value = total.ToString("F2");     
+
+                        
+                        CalcularTotales();
+                    }
+                }
+            }
+        }
+
+
+
     }
 }
