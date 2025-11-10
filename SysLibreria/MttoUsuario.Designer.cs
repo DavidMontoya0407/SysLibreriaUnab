@@ -186,6 +186,7 @@
             this.TXT_NOMBRE.Name = "TXT_NOMBRE";
             this.TXT_NOMBRE.Size = new System.Drawing.Size(286, 20);
             this.TXT_NOMBRE.TabIndex = 6;
+            this.TXT_NOMBRE.TextChanged += new System.EventHandler(this.TXT_NOMBRE_TextChanged);
             // 
             // LBL_APELLIDO
             // 
@@ -338,9 +339,9 @@
             this.groupBox1.Controls.Add(this.COD_ROL);
             this.groupBox1.Controls.Add(this.LBL_COD_ROL);
             this.groupBox1.Location = new System.Drawing.Point(9, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(740, 175);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;

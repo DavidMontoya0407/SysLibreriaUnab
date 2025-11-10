@@ -122,6 +122,7 @@ namespace SysLibreria
         { 
             COD_ROL.Text = string.Empty;
             NOM_ROL.Text = string.Empty;
+            TXT_CO_USER.Text = string.Empty;
             TXT_NOMBRE.Text = string.Empty;
             TXT_APELLIDOS.Text = string.Empty;
             TXT_USER.Text = string.Empty;
@@ -370,6 +371,27 @@ namespace SysLibreria
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void TXT_NOMBRE_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            if(!string.IsNullOrEmpty(TXT_NOMBRE.Text))
+            {
+                foreach (var usuario in listaUsuario.Where(usuario => ($"{usuario.Nombres}").ToUpper().Trim().Contains(TXT_NOMBRE.Text.ToUpper().Trim())))
+                {
+                    dataGridView1.Rows.Add(usuario.IdUsuario, usuario.Nombres, usuario.Apellidos, usuario.Rol.Nombre, usuario.IdRol,
+                       (usuario.Estado == 0 ? "Activo" : "Inactivo"));
+                }
+            }
+            else
+            {
+                foreach (var usuario in listaUsuario)
+                {
+                    dataGridView1.Rows.Add(usuario.IdUsuario, usuario.Nombres, usuario.Apellidos, usuario.Rol.Nombre, usuario.IdRol,
+                       (usuario.Estado == 0 ? "Activo" : "Inactivo"));
+                }
+            }
         }
     }
 }
