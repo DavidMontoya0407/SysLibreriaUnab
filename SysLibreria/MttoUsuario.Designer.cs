@@ -62,30 +62,27 @@
             // LBL_COD_ROL
             // 
             this.LBL_COD_ROL.AutoSize = true;
-            this.LBL_COD_ROL.Location = new System.Drawing.Point(29, 16);
-            this.LBL_COD_ROL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_COD_ROL.Location = new System.Drawing.Point(22, 13);
             this.LBL_COD_ROL.Name = "LBL_COD_ROL";
-            this.LBL_COD_ROL.Size = new System.Drawing.Size(28, 16);
+            this.LBL_COD_ROL.Size = new System.Drawing.Size(23, 13);
             this.LBL_COD_ROL.TabIndex = 0;
             this.LBL_COD_ROL.Text = "Rol";
             // 
             // COD_ROL
             // 
-            this.COD_ROL.Location = new System.Drawing.Point(103, 13);
-            this.COD_ROL.Margin = new System.Windows.Forms.Padding(4);
+            this.COD_ROL.Location = new System.Drawing.Point(77, 11);
             this.COD_ROL.Name = "COD_ROL";
             this.COD_ROL.ReadOnly = true;
-            this.COD_ROL.Size = new System.Drawing.Size(85, 22);
+            this.COD_ROL.Size = new System.Drawing.Size(65, 20);
             this.COD_ROL.TabIndex = 1;
             this.COD_ROL.TextChanged += new System.EventHandler(this.COD_ROL_TextChanged);
             // 
             // NOM_ROL
             // 
-            this.NOM_ROL.Location = new System.Drawing.Point(196, 13);
-            this.NOM_ROL.Margin = new System.Windows.Forms.Padding(4);
+            this.NOM_ROL.Location = new System.Drawing.Point(147, 11);
             this.NOM_ROL.Name = "NOM_ROL";
             this.NOM_ROL.ReadOnly = true;
-            this.NOM_ROL.Size = new System.Drawing.Size(285, 22);
+            this.NOM_ROL.Size = new System.Drawing.Size(215, 20);
             this.NOM_ROL.TabIndex = 2;
             this.NOM_ROL.TextChanged += new System.EventHandler(this.NOM_ROL_TextChanged);
             // 
@@ -94,12 +91,11 @@
             this.BTN_ROL.BackColor = System.Drawing.Color.RoyalBlue;
             this.BTN_ROL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_ROL.ForeColor = System.Drawing.Color.White;
-            this.BTN_ROL.Location = new System.Drawing.Point(438, 155);
-            this.BTN_ROL.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_ROL.Location = new System.Drawing.Point(357, 126);
             this.BTN_ROL.Name = "BTN_ROL";
-            this.BTN_ROL.Size = new System.Drawing.Size(106, 39);
+            this.BTN_ROL.Size = new System.Drawing.Size(100, 32);
             this.BTN_ROL.TabIndex = 3;
-            this.BTN_ROL.Text = "BUSCAR";
+            this.BTN_ROL.Text = "BUSCAR ROL";
             this.BTN_ROL.UseVisualStyleBackColor = false;
             this.BTN_ROL.Click += new System.EventHandler(this.BTN_ROL_Click);
             // 
@@ -116,12 +112,11 @@
             this.Rol,
             this.IdRol,
             this.Estado});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 234);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 190);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(986, 213);
+            this.dataGridView1.Size = new System.Drawing.Size(740, 173);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
@@ -178,77 +173,69 @@
             // LBL_NOM_USUARIO
             // 
             this.LBL_NOM_USUARIO.AutoSize = true;
-            this.LBL_NOM_USUARIO.Location = new System.Drawing.Point(29, 64);
-            this.LBL_NOM_USUARIO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_NOM_USUARIO.Location = new System.Drawing.Point(22, 52);
             this.LBL_NOM_USUARIO.Name = "LBL_NOM_USUARIO";
-            this.LBL_NOM_USUARIO.Size = new System.Drawing.Size(63, 16);
+            this.LBL_NOM_USUARIO.Size = new System.Drawing.Size(49, 13);
             this.LBL_NOM_USUARIO.TabIndex = 5;
             this.LBL_NOM_USUARIO.Text = "Nombres";
             this.LBL_NOM_USUARIO.Click += new System.EventHandler(this.label1_Click);
             // 
             // TXT_NOMBRE
             // 
-            this.TXT_NOMBRE.Location = new System.Drawing.Point(103, 64);
-            this.TXT_NOMBRE.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_NOMBRE.Location = new System.Drawing.Point(77, 52);
             this.TXT_NOMBRE.Name = "TXT_NOMBRE";
-            this.TXT_NOMBRE.Size = new System.Drawing.Size(380, 22);
+            this.TXT_NOMBRE.Size = new System.Drawing.Size(286, 20);
             this.TXT_NOMBRE.TabIndex = 6;
             // 
             // LBL_APELLIDO
             // 
             this.LBL_APELLIDO.AutoSize = true;
-            this.LBL_APELLIDO.Location = new System.Drawing.Point(36, 115);
-            this.LBL_APELLIDO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_APELLIDO.Location = new System.Drawing.Point(27, 93);
             this.LBL_APELLIDO.Name = "LBL_APELLIDO";
-            this.LBL_APELLIDO.Size = new System.Drawing.Size(64, 16);
+            this.LBL_APELLIDO.Size = new System.Drawing.Size(49, 13);
             this.LBL_APELLIDO.TabIndex = 7;
             this.LBL_APELLIDO.Text = "Apellidos";
             // 
             // TXT_APELLIDOS
             // 
-            this.TXT_APELLIDOS.Location = new System.Drawing.Point(108, 109);
-            this.TXT_APELLIDOS.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_APELLIDOS.Location = new System.Drawing.Point(81, 89);
             this.TXT_APELLIDOS.Name = "TXT_APELLIDOS";
-            this.TXT_APELLIDOS.Size = new System.Drawing.Size(380, 22);
+            this.TXT_APELLIDOS.Size = new System.Drawing.Size(286, 20);
             this.TXT_APELLIDOS.TabIndex = 8;
             // 
             // LBL_USER
             // 
             this.LBL_USER.AutoSize = true;
-            this.LBL_USER.Location = new System.Drawing.Point(528, 64);
-            this.LBL_USER.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_USER.Location = new System.Drawing.Point(396, 52);
             this.LBL_USER.Name = "LBL_USER";
-            this.LBL_USER.Size = new System.Drawing.Size(54, 16);
+            this.LBL_USER.Size = new System.Drawing.Size(43, 13);
             this.LBL_USER.TabIndex = 9;
             this.LBL_USER.Text = "Usuario";
             this.LBL_USER.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // TXT_USER
             // 
-            this.TXT_USER.Location = new System.Drawing.Point(618, 58);
-            this.TXT_USER.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_USER.Location = new System.Drawing.Point(464, 47);
             this.TXT_USER.Name = "TXT_USER";
-            this.TXT_USER.Size = new System.Drawing.Size(246, 22);
+            this.TXT_USER.Size = new System.Drawing.Size(186, 20);
             this.TXT_USER.TabIndex = 10;
             this.TXT_USER.TextChanged += new System.EventHandler(this.TXT_USER_TextChanged);
             // 
             // LBL_CONTRAEÑA
             // 
             this.LBL_CONTRAEÑA.AutoSize = true;
-            this.LBL_CONTRAEÑA.Location = new System.Drawing.Point(528, 115);
-            this.LBL_CONTRAEÑA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_CONTRAEÑA.Location = new System.Drawing.Point(396, 93);
             this.LBL_CONTRAEÑA.Name = "LBL_CONTRAEÑA";
-            this.LBL_CONTRAEÑA.Size = new System.Drawing.Size(76, 16);
+            this.LBL_CONTRAEÑA.Size = new System.Drawing.Size(61, 13);
             this.LBL_CONTRAEÑA.TabIndex = 11;
             this.LBL_CONTRAEÑA.Text = "Contraseña";
             this.LBL_CONTRAEÑA.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // TXT_CONTRASEÑA
             // 
-            this.TXT_CONTRASEÑA.Location = new System.Drawing.Point(618, 109);
-            this.TXT_CONTRASEÑA.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_CONTRASEÑA.Location = new System.Drawing.Point(464, 89);
             this.TXT_CONTRASEÑA.Name = "TXT_CONTRASEÑA";
-            this.TXT_CONTRASEÑA.Size = new System.Drawing.Size(246, 22);
+            this.TXT_CONTRASEÑA.Size = new System.Drawing.Size(186, 20);
             this.TXT_CONTRASEÑA.TabIndex = 12;
             // 
             // CB_ESTADO
@@ -257,20 +244,18 @@
             this.CB_ESTADO.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.CB_ESTADO.Location = new System.Drawing.Point(108, 164);
-            this.CB_ESTADO.Margin = new System.Windows.Forms.Padding(4);
+            this.CB_ESTADO.Location = new System.Drawing.Point(81, 133);
             this.CB_ESTADO.Name = "CB_ESTADO";
-            this.CB_ESTADO.Size = new System.Drawing.Size(306, 24);
+            this.CB_ESTADO.Size = new System.Drawing.Size(230, 21);
             this.CB_ESTADO.TabIndex = 13;
             this.CB_ESTADO.Text = "--Selecione el estado--";
             // 
             // LBL_ESTADO
             // 
             this.LBL_ESTADO.AutoSize = true;
-            this.LBL_ESTADO.Location = new System.Drawing.Point(36, 167);
-            this.LBL_ESTADO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_ESTADO.Location = new System.Drawing.Point(27, 136);
             this.LBL_ESTADO.Name = "LBL_ESTADO";
-            this.LBL_ESTADO.Size = new System.Drawing.Size(50, 16);
+            this.LBL_ESTADO.Size = new System.Drawing.Size(40, 13);
             this.LBL_ESTADO.TabIndex = 14;
             this.LBL_ESTADO.Text = "Estado";
             // 
@@ -279,10 +264,9 @@
             this.BTN_AGREGAR.BackColor = System.Drawing.Color.ForestGreen;
             this.BTN_AGREGAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_AGREGAR.ForeColor = System.Drawing.Color.White;
-            this.BTN_AGREGAR.Location = new System.Drawing.Point(564, 155);
-            this.BTN_AGREGAR.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_AGREGAR.Location = new System.Drawing.Point(464, 126);
             this.BTN_AGREGAR.Name = "BTN_AGREGAR";
-            this.BTN_AGREGAR.Size = new System.Drawing.Size(104, 40);
+            this.BTN_AGREGAR.Size = new System.Drawing.Size(78, 32);
             this.BTN_AGREGAR.TabIndex = 15;
             this.BTN_AGREGAR.Text = "AGREGAR";
             this.BTN_AGREGAR.UseVisualStyleBackColor = false;
@@ -293,10 +277,9 @@
             this.BTN_ELIMINAR.BackColor = System.Drawing.Color.Crimson;
             this.BTN_ELIMINAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_ELIMINAR.ForeColor = System.Drawing.Color.White;
-            this.BTN_ELIMINAR.Location = new System.Drawing.Point(868, 154);
-            this.BTN_ELIMINAR.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_ELIMINAR.Location = new System.Drawing.Point(651, 125);
             this.BTN_ELIMINAR.Name = "BTN_ELIMINAR";
-            this.BTN_ELIMINAR.Size = new System.Drawing.Size(111, 40);
+            this.BTN_ELIMINAR.Size = new System.Drawing.Size(83, 32);
             this.BTN_ELIMINAR.TabIndex = 16;
             this.BTN_ELIMINAR.Text = "ELIMINAR";
             this.BTN_ELIMINAR.UseVisualStyleBackColor = false;
@@ -305,20 +288,18 @@
             // LBL_USUARIO
             // 
             this.LBL_USUARIO.AutoSize = true;
-            this.LBL_USUARIO.Location = new System.Drawing.Point(528, 19);
-            this.LBL_USUARIO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBL_USUARIO.Location = new System.Drawing.Point(396, 15);
             this.LBL_USUARIO.Name = "LBL_USUARIO";
-            this.LBL_USUARIO.Size = new System.Drawing.Size(82, 16);
+            this.LBL_USUARIO.Size = new System.Drawing.Size(65, 13);
             this.LBL_USUARIO.TabIndex = 17;
             this.LBL_USUARIO.Text = "Cod Usuario";
             // 
             // TXT_CO_USER
             // 
-            this.TXT_CO_USER.Location = new System.Drawing.Point(618, 16);
-            this.TXT_CO_USER.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_CO_USER.Location = new System.Drawing.Point(464, 13);
             this.TXT_CO_USER.Name = "TXT_CO_USER";
             this.TXT_CO_USER.ReadOnly = true;
-            this.TXT_CO_USER.Size = new System.Drawing.Size(246, 22);
+            this.TXT_CO_USER.Size = new System.Drawing.Size(186, 20);
             this.TXT_CO_USER.TabIndex = 18;
             // 
             // BTN_MODIFICAR
@@ -326,10 +307,9 @@
             this.BTN_MODIFICAR.BackColor = System.Drawing.Color.Chocolate;
             this.BTN_MODIFICAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_MODIFICAR.ForeColor = System.Drawing.Color.White;
-            this.BTN_MODIFICAR.Location = new System.Drawing.Point(734, 154);
-            this.BTN_MODIFICAR.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_MODIFICAR.Location = new System.Drawing.Point(550, 125);
             this.BTN_MODIFICAR.Name = "BTN_MODIFICAR";
-            this.BTN_MODIFICAR.Size = new System.Drawing.Size(116, 40);
+            this.BTN_MODIFICAR.Size = new System.Drawing.Size(87, 32);
             this.BTN_MODIFICAR.TabIndex = 19;
             this.BTN_MODIFICAR.Text = "MODIFICAR";
             this.BTN_MODIFICAR.UseVisualStyleBackColor = false;
@@ -357,22 +337,23 @@
             this.groupBox1.Controls.Add(this.NOM_ROL);
             this.groupBox1.Controls.Add(this.COD_ROL);
             this.groupBox1.Controls.Add(this.LBL_COD_ROL);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(986, 215);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(740, 175);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // DGV_USUARIO
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1011, 469);
+            this.ClientSize = new System.Drawing.Size(758, 381);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DGV_USUARIO";
             this.Text = "MttoUsuario";
             this.Load += new System.EventHandler(this.MttoUsuario_Load);
