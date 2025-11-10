@@ -32,7 +32,7 @@ namespace SysLibreria
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-
+            string usuario = CBUsuario.Text;
             DateTime fInicio = dtpFechaInicial.Value.Date;
             DateTime fFinal = dtpFechafin.Value.Date;
 
@@ -47,7 +47,7 @@ namespace SysLibreria
             }
 
             var ventasFiltradas = listaVentas
-                .Where(v => v.Fecha.Date >= fInicio && v.Fecha.Date <= fFinal)
+                .Where(v => v.Fecha.Date >= fInicio && v.Fecha.Date <= fFinal && v.Usuario.Nombres == usuario)
                 .ToList();
 
        
