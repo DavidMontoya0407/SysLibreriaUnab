@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ namespace SysLibreria
         List<Usuario> usuarios = new List<Usuario>();
         Principal Principal = new Principal();
 
-
+        private string ticketTexto = "";
         public Factura()
         {
             InitializeComponent();
@@ -346,7 +348,7 @@ namespace SysLibreria
             string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             try
             {
-              
+
                 using (BDLIBRERIAEntities DB = new BDLIBRERIAEntities())
                 {
                     Cliente cliente = new Cliente();
@@ -359,7 +361,7 @@ namespace SysLibreria
                     DB.SaveChanges();
                     Venta nuevaVenta = new Venta
                     {
-                                    
+
                         IdUsuario = SesionActual.IdUsuario,
                         IdCliente = cliente.IdCliente,
                         Fecha = DateTime.Now,
@@ -425,9 +427,12 @@ namespace SysLibreria
 
         private void BTN_GUARDAR_Click(object sender, EventArgs e)
         {
-            if(validarCampos(true))
+            if (validarCampos(true))
             {
-                if(agregarfactura())
+                ImprimirTicket(vistaPrevia: true);
+                GuardarTicketPDF();
+
+                if (agregarfactura())
                 {
                     limpiarCampos();
                 }
@@ -439,5 +444,109 @@ namespace SysLibreria
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+
+        private void ImprimirTicket(bool vistaPrevia = true)
+        {
+            // Preparar contenido
+            GenerarTicketTexto();
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(PrintTicket);
+
+            if (vistaPrevia)
+            {
+                PrintPreviewDialog preview = new PrintPreviewDialog();
+                preview.Document = pd;
+                preview.ShowDialog(); 
+            }
+            else
+            {
+                pd.Print(); 
+            }
+        }
+
+        private void GenerarTicketTexto()
+        {
+            StringWriter sw = new StringWriter();
+
+            sw.WriteLine("        LIBRERÍA POCHITA");
+            sw.WriteLine("         Tel: 2222-3333");
+            sw.WriteLine($"Fecha: {DateTime.Now:dd/MM/yyyy HH:mm}");
+            sw.WriteLine("------------------------------------------");
+            sw.WriteLine($"Cliente: {TXT_NOMBRE_CLIENTE.Text}");
+            sw.WriteLine($"Dirección: {TXT_DIRECCION.Text}");
+            sw.WriteLine($"Documento: {TXT_DOCUMENTO.Text}");
+            sw.WriteLine($"Vendedor: {TXT_VENDEDOR.Text}");
+            sw.WriteLine("------------------------------------------");
+            sw.WriteLine("Producto        Cant  P.Unit  Desc   Total");
+            sw.WriteLine("------------------------------------------");
+
+            foreach (DataGridViewRow row in DGV_DVENTA.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string producto = row.Cells["Producto"].Value?.ToString() ?? "";
+                string cantidad = row.Cells["Cantidad"].Value?.ToString() ?? "";
+                string punitario = row.Cells["Punitario"].Value?.ToString() ?? "";
+                string descuento = row.Cells["Descuento"].Value?.ToString() ?? "";
+                string totalProd = row.Cells["Total"].Value?.ToString() ?? "";
+
+                producto = producto.Length > 12 ? producto.Substring(0, 12) : producto.PadRight(12);
+                cantidad = cantidad.PadLeft(4);
+                punitario = punitario.PadLeft(7);
+                descuento = descuento.PadLeft(6);
+                totalProd = totalProd.PadLeft(7);
+
+                sw.WriteLine($"{producto}{cantidad}{punitario}{descuento}{totalProd}");
+            }
+
+            sw.WriteLine("------------------------------------------");
+            sw.WriteLine($"SUBTOTAL: {TXT_SUBTOTAL.Text}");
+            sw.WriteLine($"IVA:      {TXT_IVA.Text}");
+            sw.WriteLine($"TOTAL:    {TXT_TOTAL.Text}");
+            sw.WriteLine("------------------------------------------");
+            sw.WriteLine("    ¡Gracias por su compra!");
+            sw.WriteLine("          Vuelva pronto");
+
+            ticketTexto = sw.ToString();
+        }
+
+        private void PrintTicket(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Consolas", 9);
+            float y = 0;
+            e.Graphics.DrawString(ticketTexto, font, Brushes.Black, new PointF(0, y));
+        }
+
+        private void GuardarTicketPDF()
+        {
+            GenerarTicketTexto();
+
+            using (SaveFileDialog sfd = new SaveFileDialog()
+            {
+                Filter = "Archivos PDF|*.pdf",
+                FileName = $"Ticket_{DateTime.Now:yyyyMMdd_HHmm}.pdf"
+            })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (PrintDocument pd = new PrintDocument())
+                    {
+                        pd.PrintPage += (s, e) =>
+                        {
+                            Font font = new Font("Consolas", 9);
+                            e.Graphics.DrawString(ticketTexto, font, Brushes.Black, new PointF(0, 0));
+                        };
+                        pd.PrinterSettings.PrintToFile = true;
+                        pd.PrinterSettings.PrintFileName = sfd.FileName;
+                        pd.Print();
+                    }
+                    MessageBox.Show("Ticket guardado como PDF correctamente ✅", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
     }
 }
