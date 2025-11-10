@@ -12,13 +12,15 @@ namespace SysLibreria
 {
     public partial class FrmCategoria : Form
     {
-        private int? categoriaSeleccionadaId = null; // ← ID de la categoría en edición
+        private int? categoriaSeleccionadaId = null; 
 
         public FrmCategoria()
         {
             InitializeComponent();
             txtNombre.TextChanged += txtNombre_TextChanged;
             txtDescripcion.TextChanged += txtDescripcion_TextChanged;
+
+
         }
 
         private void FrmCategoria_Load(object sender, EventArgs e)
@@ -177,7 +179,7 @@ namespace SysLibreria
         {
             txtNombre.Text = "";
             txtDescripcion.Text = "";
-            categoriaSeleccionadaId = null; // ← Limpiar ID
+            categoriaSeleccionadaId = null; 
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

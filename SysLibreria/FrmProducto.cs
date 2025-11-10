@@ -19,15 +19,99 @@ namespace SysLibreria
             InitializeComponent();
             this.txtPrecio.KeyPress += new KeyPressEventHandler(txtPrecio_KeyPress);
             this.txtStock.KeyPress += new KeyPressEventHandler(txtStock_KeyPress);
+
+            
+            txtNombre.TextChanged += (s, e) => FiltrarProductos();
+            txtDescripcion.TextChanged += (s, e) => FiltrarProductos();
+            txtPrecio.TextChanged += (s, e) => FiltrarProductos();
+            txtStock.TextChanged += (s, e) => FiltrarProductos();
+
+           
+            cbProveedor.SelectedIndexChanged += (s, e) => FiltrarProductos();
+            cbCategoria.SelectedIndexChanged += (s, e) => FiltrarProductos();
+        }
+
+        private void FiltrarProductos()
+        {
+            string nombre = txtNombre.Text.Trim();
+            string descripcion = txtDescripcion.Text.Trim();
+            string precioTexto = txtPrecio.Text.Trim();
+            string stockTexto = txtStock.Text.Trim();
+
+            int? proveedorId = cbProveedor.SelectedValue as int?;
+            int? categoriaId = cbCategoria.SelectedValue as int?;
+
+            DGV_PRODUCTO.Rows.Clear();
+
+            using (var db = new BDLIBRERIAEntities())
+            {
+                var query = db.Producto.AsQueryable();
+
+                if (!string.IsNullOrEmpty(nombre))
+                    query = query.Where(p => p.Nombre.Contains(nombre));
+
+                if (!string.IsNullOrEmpty(descripcion))
+                    query = query.Where(p => p.Descripcion.Contains(descripcion));
+
+                if (!string.IsNullOrEmpty(precioTexto))
+                    query = query.Where(p => p.Precio.ToString().Contains(precioTexto));
+
+                if (!string.IsNullOrEmpty(stockTexto))
+                    query = query.Where(p => p.Stock.ToString().Contains(stockTexto));
+
+                // 🔹 Filtro por proveedor
+                if (proveedorId.HasValue && proveedorId.Value > 0)
+                    query = query.Where(p => p.IdProveedor == proveedorId.Value);
+
+                // 🔹 Filtro por categoría
+                if (categoriaId.HasValue && categoriaId.Value > 0)
+                    query = query.Where(p => p.IdCategoria == categoriaId.Value);
+
+                var lista = query.Select(p => new
+                {
+                    p.IdProducto,
+                    p.Nombre,
+                    p.Descripcion,
+                    p.Precio,
+                    p.Stock,
+                    ProveedorNombre = p.Proveedor.Nombre,
+                    CategoriaNombre = p.Categoria.Nombre,
+                    p.IdProveedor,
+                    p.IdCategoria
+                }).ToList();
+
+                foreach (var p in lista)
+                {
+                    DGV_PRODUCTO.Rows.Add(
+                        p.IdProducto,
+                        p.Nombre,
+                        p.Descripcion,
+                        p.Precio.ToString("F2"),
+                        p.Stock,
+                        p.ProveedorNombre,
+                        p.CategoriaNombre,
+                        p.IdProveedor,
+                        p.IdCategoria
+                    );
+                }
+            }
         }
 
         private void FrmProducto_Load(object sender, EventArgs e)
         {
             DGV_PRODUCTO.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_PRODUCTO.MultiSelect = false;
+
             CargarCombos();
             ConfigurarColumnas();
             CargarProductos();
+
+            txtNombre.TextChanged += (s, ev) => FiltrarProductos();
+            txtDescripcion.TextChanged += (s, ev) => FiltrarProductos();
+            txtPrecio.TextChanged += (s, ev) => FiltrarProductos();
+            txtStock.TextChanged += (s, ev) => FiltrarProductos();
+            cbProveedor.SelectedIndexChanged += (s, ev) => FiltrarProductos();
+            cbCategoria.SelectedIndexChanged += (s, ev) => FiltrarProductos();
         }
 
         private void CargarCombos()
@@ -71,7 +155,18 @@ namespace SysLibreria
 
             using (var db = new BDLIBRERIAEntities())
             {
-                var lista = db.Producto
+                int? proveedorId = cbProveedor.SelectedValue as int?;
+                int? categoriaId = cbCategoria.SelectedValue as int?;
+
+                var query = db.Producto.AsQueryable();
+
+                if (proveedorId.HasValue && proveedorId.Value > 0)
+                    query = query.Where(p => p.IdProveedor == proveedorId.Value);
+
+                if (categoriaId.HasValue && categoriaId.Value > 0)
+                    query = query.Where(p => p.IdCategoria == categoriaId.Value);
+
+                var lista = query
                     .Select(p => new
                     {
                         p.IdProducto,
