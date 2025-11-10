@@ -59,11 +59,11 @@ namespace SysLibreria
                 if (!string.IsNullOrEmpty(stockTexto))
                     query = query.Where(p => p.Stock.ToString().Contains(stockTexto));
 
-                // 🔹 Filtro por proveedor
+              
                 if (proveedorId.HasValue && proveedorId.Value > 0)
                     query = query.Where(p => p.IdProveedor == proveedorId.Value);
 
-                // 🔹 Filtro por categoría
+                
                 if (categoriaId.HasValue && categoriaId.Value > 0)
                     query = query.Where(p => p.IdCategoria == categoriaId.Value);
 
@@ -118,19 +118,31 @@ namespace SysLibreria
         {
             using (var db = new BDLIBRERIAEntities())
             {
-                cbProveedor.DataSource = db.Proveedor.ToList();
+               
+                var proveedores = db.Proveedor
+                    .Select(p => new { p.IdProveedor, p.Nombre })
+                    .ToList();
+
+                proveedores.Insert(0, new { IdProveedor = 0, Nombre = "Todos" });
+
+                cbProveedor.DataSource = proveedores;
                 cbProveedor.DisplayMember = "Nombre";
                 cbProveedor.ValueMember = "IdProveedor";
+                cbProveedor.SelectedIndex = 0;
 
-                cbCategoria.DataSource = db.Categoria.ToList();
+              
+                var categorias = db.Categoria
+                    .Select(c => new { c.IdCategoria, c.Nombre })
+                    .ToList();
+
+                categorias.Insert(0, new { IdCategoria = 0, Nombre = "Todos" });
+
+                cbCategoria.DataSource = categorias;
                 cbCategoria.DisplayMember = "Nombre";
                 cbCategoria.ValueMember = "IdCategoria";
+                cbCategoria.SelectedIndex = 0;
             }
-
-            cbProveedor.SelectedIndex = 0;
-            cbCategoria.SelectedIndex = 0;
         }
-
         private void ConfigurarColumnas()
         {
             DGV_PRODUCTO.Columns.Clear();
