@@ -409,7 +409,7 @@ namespace SysLibreria
                 txtPrecio.Text = Convert.ToDecimal(fila.Cells["Precio"].Value).ToString("F2");
                 txtStock.Text = fila.Cells["Stock"].Value?.ToString() ?? "";
 
-                if (fila.Cells["IdProveedor"].Value != null)
+                if (fila.Cells["IdProveedor"].Value != null) 
                     cbProveedor.SelectedValue = Convert.ToInt32(fila.Cells["IdProveedor"].Value);
 
                 if (fila.Cells["IdCategoria"].Value != null)
