@@ -515,9 +515,66 @@ namespace SysLibreria
         private void PrintTicket(object sender, PrintPageEventArgs e)
         {
             Font font = new Font("Consolas", 9);
+            Font bold = new Font("Consolas", 9, FontStyle.Bold);
             float y = 0;
-            e.Graphics.DrawString(ticketTexto, font, Brushes.Black, new PointF(0, y));
+            float alto = 15;
+            int ancho = 280; // Ideal para impresora térmica 80mm
+
+            // Encabezado
+            e.Graphics.DrawString("LIBRERÍA POCHITA", new Font("Consolas", 11, FontStyle.Bold), Brushes.Black, new PointF(40, y += alto));
+            e.Graphics.DrawString("Tel: 2222-3333", font, Brushes.Black, new PointF(70, y += alto));
+            e.Graphics.DrawString($"Fecha: {DateTime.Now:dd/MM/yyyy HH:mm}", font, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString("----------------------------------------", font, Brushes.Black, new PointF(0, y += alto));
+
+            // Datos del cliente
+            e.Graphics.DrawString($"Cliente: {TXT_NOMBRE_CLIENTE.Text}", font, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString($"Dirección: {TXT_DIRECCION.Text}", font, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString($"Documento: {TXT_DOCUMENTO.Text}", font, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString($"Vendedor: {TXT_VENDEDOR.Text}", font, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString("----------------------------------------", font, Brushes.Black, new PointF(0, y += alto));
+
+            // Encabezados
+            e.Graphics.DrawString("Producto", bold, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString("Cant", bold, Brushes.Black, new PointF(120, y));
+            e.Graphics.DrawString("P.Unit", bold, Brushes.Black, new PointF(160, y));
+            e.Graphics.DrawString("Desc", bold, Brushes.Black, new PointF(205, y));
+            e.Graphics.DrawString("Total", bold, Brushes.Black, new PointF(245, y));
+            e.Graphics.DrawString("----------------------------------------", font, Brushes.Black, new PointF(0, y += alto));
+
+            // Filas del DGV
+            foreach (DataGridViewRow row in DGV_DVENTA.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string producto = row.Cells["Producto"].Value?.ToString() ?? "";
+                string cantidad = row.Cells["Cantidad"].Value?.ToString() ?? "";
+                string punitario = row.Cells["Punitario"].Value?.ToString() ?? "";
+                string descuento = row.Cells["Descuento"].Value?.ToString() ?? "";
+                string totalProd = row.Cells["Total"].Value?.ToString() ?? "";
+
+                // Cortar texto largo si se sale del espacio
+                if (producto.Length > 15)
+                    producto = producto.Substring(0, 15);
+
+                // Dibujar cada valor centrado en su columna
+                e.Graphics.DrawString(producto, font, Brushes.Black, new PointF(0, y += alto));
+                e.Graphics.DrawString(cantidad, font, Brushes.Black, new PointF(125, y));
+                e.Graphics.DrawString(punitario, font, Brushes.Black, new PointF(165, y));
+                e.Graphics.DrawString(descuento, font, Brushes.Black, new PointF(210, y));
+                e.Graphics.DrawString(totalProd, font, Brushes.Black, new PointF(255, y));
+            }
+
+            e.Graphics.DrawString("----------------------------------------", font, Brushes.Black, new PointF(0, y += alto));
+
+            // Totales
+            e.Graphics.DrawString($"SUBTOTAL: {TXT_SUBTOTAL.Text}", font, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString($"IVA: {TXT_IVA.Text}", font, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString($"TOTAL: {TXT_TOTAL.Text}", bold, Brushes.Black, new PointF(0, y += alto));
+            e.Graphics.DrawString("----------------------------------------", font, Brushes.Black, new PointF(0, y += alto));
+
+            e.Graphics.DrawString("¡Gracias por su compra!", font, Brushes.Black, new PointF(50, y += alto));
         }
+
 
         private void GuardarTicketPDF()
         {
