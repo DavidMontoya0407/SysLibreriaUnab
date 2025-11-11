@@ -165,7 +165,7 @@ namespace SysLibreria
         {
             if (string.IsNullOrWhiteSpace(TXT_COD.Text))
             {
-                MessageBox.Show("Seleccione un proveedor para eliminar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un registro para eliminar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;

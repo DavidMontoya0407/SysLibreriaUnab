@@ -65,11 +65,13 @@ namespace SysLibreria
                     venta.IdVenta,
                     venta.Fecha.ToString("dd/MM/yyyy"),
                     venta.Cliente.Nombre,
-                    venta.Usuario.Nombres
+                    venta.Usuario.Nombres,
+                     venta.Total
+
                 );
             }
 
-
+            CalcularTotal();
         }
 
         private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -88,6 +90,7 @@ namespace SysLibreria
 
         private void FrmVentas_Load_1(object sender, EventArgs e)
         {
+           
             dgvVentas.Rows.Clear();
             using (BDLIBRERIAEntities DB = new BDLIBRERIAEntities())
             {
@@ -95,9 +98,10 @@ namespace SysLibreria
                                select venta).ToList();
                 foreach (var venta in listaVentas)
                 {
-                    dgvVentas.Rows.Add(venta.IdVenta, venta.Fecha, venta.Cliente.Nombre, venta.Usuario.Nombres);
+                    dgvVentas.Rows.Add(venta.IdVenta, venta.Fecha, venta.Cliente.Nombre, venta.Usuario.Nombres, venta.Total);
                 }
             }
+             CalcularTotal();
         }
 
         private void dtpFechaInicial_ValueChanged(object sender, EventArgs e)
@@ -139,7 +143,8 @@ namespace SysLibreria
                         venta.IdVenta,
                         venta.Fecha.ToString("dd/MM/yyyy"),
                         venta.Cliente.Nombre,
-                        venta.Usuario.Nombres
+                        venta.Usuario.Nombres,
+                         venta.Total
                     );
 
                 }
@@ -152,10 +157,12 @@ namespace SysLibreria
                         venta.IdVenta,
                         venta.Fecha.ToString("dd/MM/yyyy"),
                         venta.Cliente.Nombre,
-                        venta.Usuario.Nombres
+                        venta.Usuario.Nombres,
+                         venta.Total
                     );
                 }
             }
+            CalcularTotal();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -163,6 +170,33 @@ namespace SysLibreria
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void TXT_TOTAL_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void CalcularTotal()
+        {
+            decimal suma = 0;
+
+            foreach (DataGridViewRow fila in dgvVentas.Rows)
+            {
+                // Evitar sumar la fila nueva vacía
+                if (!fila.IsNewRow)
+                {
+                    object valorCelda = fila.Cells[4].Value; // Columna número 4
+
+                    if (valorCelda != null && decimal.TryParse(valorCelda.ToString(), out decimal valor))
+                    {
+                        suma += valor;
+                    }
+                }
+            }
+
+            TXT_TOTAL.Text = suma.ToString("F2");
+        }
+
     }
 }
        

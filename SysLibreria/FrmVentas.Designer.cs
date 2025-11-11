@@ -46,6 +46,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.TXT_USUARIO = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.LBL_TOTAL = new System.Windows.Forms.Label();
+            this.TXT_TOTAL = new System.Windows.Forms.TextBox();
+            this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
@@ -77,6 +80,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.groupBox1.Controls.Add(this.TXT_TOTAL);
+            this.groupBox1.Controls.Add(this.LBL_TOTAL);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.TXT_USUARIO);
             this.groupBox1.Controls.Add(this.dtpFechaInicial);
@@ -115,13 +120,14 @@
             this.IdVenta,
             this.Fecha,
             this.Cliente,
-            this.Vendedor});
+            this.Vendedor,
+            this.TOTAL});
             this.dgvVentas.Location = new System.Drawing.Point(220, 51);
             this.dgvVentas.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.RowHeadersWidth = 51;
             this.dgvVentas.RowTemplate.Height = 24;
-            this.dgvVentas.Size = new System.Drawing.Size(522, 302);
+            this.dgvVentas.Size = new System.Drawing.Size(522, 220);
             this.dgvVentas.TabIndex = 16;
             this.dgvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellDoubleClick);
             this.dgvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellDoubleClick);
@@ -252,6 +258,31 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // LBL_TOTAL
+            // 
+            this.LBL_TOTAL.AutoSize = true;
+            this.LBL_TOTAL.Location = new System.Drawing.Point(295, 328);
+            this.LBL_TOTAL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LBL_TOTAL.Name = "LBL_TOTAL";
+            this.LBL_TOTAL.Size = new System.Drawing.Size(75, 13);
+            this.LBL_TOTAL.TabIndex = 24;
+            this.LBL_TOTAL.Text = "Total vendido:";
+            // 
+            // TXT_TOTAL
+            // 
+            this.TXT_TOTAL.Location = new System.Drawing.Point(375, 325);
+            this.TXT_TOTAL.Name = "TXT_TOTAL";
+            this.TXT_TOTAL.ReadOnly = true;
+            this.TXT_TOTAL.Size = new System.Drawing.Size(98, 20);
+            this.TXT_TOTAL.TabIndex = 25;
+            this.TXT_TOTAL.TextChanged += new System.EventHandler(this.TXT_TOTAL_TextChanged);
+            // 
+            // TOTAL
+            // 
+            this.TOTAL.HeaderText = "TOTAL";
+            this.TOTAL.Name = "TOTAL";
+            this.TOTAL.Visible = false;
+            // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,5 +326,8 @@
         public System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.TextBox TXT_USUARIO;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TextBox TXT_TOTAL;
+        private System.Windows.Forms.Label LBL_TOTAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
     }
 }

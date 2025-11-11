@@ -64,7 +64,7 @@
             // 
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(79, 243);
-            this.cbCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(139, 21);
             this.cbCategoria.TabIndex = 29;
@@ -74,7 +74,7 @@
             // 
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.Location = new System.Drawing.Point(79, 199);
-            this.cbProveedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbProveedor.Margin = new System.Windows.Forms.Padding(2);
             this.cbProveedor.Name = "cbProveedor";
             this.cbProveedor.Size = new System.Drawing.Size(143, 21);
             this.cbProveedor.TabIndex = 28;
@@ -98,7 +98,7 @@
             this.Categoria});
             this.DGV_PRODUCTO.GridColor = System.Drawing.Color.White;
             this.DGV_PRODUCTO.Location = new System.Drawing.Point(326, 73);
-            this.DGV_PRODUCTO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DGV_PRODUCTO.Margin = new System.Windows.Forms.Padding(2);
             this.DGV_PRODUCTO.MultiSelect = false;
             this.DGV_PRODUCTO.Name = "DGV_PRODUCTO";
             this.DGV_PRODUCTO.ReadOnly = true;
@@ -175,7 +175,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.Control;
             this.btnModificar.Location = new System.Drawing.Point(203, 283);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(86, 24);
             this.btnModificar.TabIndex = 25;
@@ -190,7 +190,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.Control;
             this.btnEliminar.Location = new System.Drawing.Point(105, 283);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(86, 24);
             this.btnEliminar.TabIndex = 24;
@@ -205,7 +205,7 @@
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAgregar.Location = new System.Drawing.Point(4, 281);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(86, 26);
             this.btnAgregar.TabIndex = 23;
@@ -216,7 +216,7 @@
             // txtStock
             // 
             this.txtStock.Location = new System.Drawing.Point(79, 120);
-            this.txtStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStock.Margin = new System.Windows.Forms.Padding(2);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(200, 20);
             this.txtStock.TabIndex = 22;
@@ -234,7 +234,7 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(79, 161);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(200, 20);
             this.txtPrecio.TabIndex = 20;
@@ -272,7 +272,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(79, 80);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(200, 20);
             this.txtDescripcion.TabIndex = 16;
@@ -280,8 +280,9 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(79, 44);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(200, 20);
             this.txtNombre.TabIndex = 15;
             // 
@@ -290,7 +291,7 @@
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(722, 46);
             this.panel1.TabIndex = 30;
@@ -348,9 +349,9 @@
             this.groupBox1.Controls.Add(this.txtDescripcion);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Location = new System.Drawing.Point(9, 66);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(301, 319);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
@@ -374,7 +375,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DGV_PRODUCTO);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmProducto";
             this.Text = "FrmProducto";
             this.Load += new System.EventHandler(this.FrmProducto_Load);
