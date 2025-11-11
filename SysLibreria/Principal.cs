@@ -35,7 +35,8 @@ namespace SysLibreria
             CB_MENU.Items.Add("ROLES");
             CB_MENU.Items.Add("USUARIOS");
             CB_MENU.Items.Add("CLIENTES");
-            
+            CB_MENU.Items.Add("PROVEEDORES");
+
 
             CB_MENU.SelectedIndex = -1;
 
@@ -76,8 +77,11 @@ namespace SysLibreria
                     FrmClientes frmClientes = new FrmClientes();
                     frmClientes.ShowDialog(this);
                     break;
+                case "PROVEEDORES":
+                    FrmProveedor frmProveedors = new FrmProveedor();
+                    frmProveedors.ShowDialog(this);
+                    break;
 
-               
 
                 default:
                     break;
