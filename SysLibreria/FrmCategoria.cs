@@ -72,32 +72,39 @@ namespace SysLibreria
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (DGV_CATEGORIA.SelectedRows.Count == 0)
+            try
             {
-                MessageBox.Show("Seleccione una fila para eliminar.");
-                return;
-            }
-
-            var confirmacion = MessageBox.Show("¿Está segura de que desea eliminar esta categoría?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirmacion != DialogResult.Yes)
-                return;
-
-            int id = Convert.ToInt32(DGV_CATEGORIA.SelectedRows[0].Cells[0].Value);
-
-            using (var db = new BDLIBRERIAEntities())
-            {
-                var categoria = db.Categoria.Find(id);
-                if (categoria != null)
+                if (DGV_CATEGORIA.SelectedRows.Count == 0)
                 {
-                    db.Categoria.Remove(categoria);
-                    db.SaveChanges();
+                    MessageBox.Show("Seleccione una fila para eliminar.");
+                    return;
                 }
+
+                var confirmacion = MessageBox.Show("¿Está segura de que desea eliminar esta categoría?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmacion != DialogResult.Yes)
+                    return;
+
+                int id = Convert.ToInt32(DGV_CATEGORIA.SelectedRows[0].Cells[0].Value);
+
+                using (var db = new BDLIBRERIAEntities())
+                {
+                    var categoria = db.Categoria.Find(id);
+                    if (categoria != null)
+                    {
+                        db.Categoria.Remove(categoria);
+                        db.SaveChanges();
+                    }
+                }
+
+                MessageBox.Show("Categoría eliminada correctamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimpiarCampos();
+                CargarCategorias();
             }
-
-            MessageBox.Show("Categoría eliminada correctamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            LimpiarCampos();
-            CargarCategorias();
+            catch (Exception p)
+            {
+                MessageBox.Show("Error al eliminar categoria. Es posible que esté asociado a otras entidades. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
