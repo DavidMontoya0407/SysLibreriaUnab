@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
-            this.CBUsuario = new System.Windows.Forms.ComboBox();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +44,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.TXT_USUARIO = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
@@ -55,7 +56,7 @@
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(767, 41);
             this.panel1.TabIndex = 18;
@@ -76,8 +77,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.groupBox1.Controls.Add(this.btnCancelar);
+            this.groupBox1.Controls.Add(this.TXT_USUARIO);
             this.groupBox1.Controls.Add(this.dtpFechaInicial);
-            this.groupBox1.Controls.Add(this.CBUsuario);
             this.groupBox1.Controls.Add(this.dgvVentas);
             this.groupBox1.Controls.Add(this.dtpFechafin);
             this.groupBox1.Controls.Add(this.btnGuardar);
@@ -85,9 +87,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(9, 51);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(746, 360);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
@@ -97,22 +99,13 @@
             // 
             this.dtpFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaInicial.Location = new System.Drawing.Point(9, 67);
-            this.dtpFechaInicial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaInicial.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaInicial.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpFechaInicial.Name = "dtpFechaInicial";
             this.dtpFechaInicial.Size = new System.Drawing.Size(201, 20);
             this.dtpFechaInicial.TabIndex = 21;
             this.dtpFechaInicial.Value = new System.DateTime(2025, 11, 9, 0, 0, 0, 0);
             this.dtpFechaInicial.ValueChanged += new System.EventHandler(this.dtpFechaInicial_ValueChanged);
-            // 
-            // CBUsuario
-            // 
-            this.CBUsuario.FormattingEnabled = true;
-            this.CBUsuario.Location = new System.Drawing.Point(10, 178);
-            this.CBUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.CBUsuario.Name = "CBUsuario";
-            this.CBUsuario.Size = new System.Drawing.Size(201, 21);
-            this.CBUsuario.TabIndex = 20;
             // 
             // dgvVentas
             // 
@@ -124,7 +117,7 @@
             this.Cliente,
             this.Vendedor});
             this.dgvVentas.Location = new System.Drawing.Point(220, 51);
-            this.dgvVentas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvVentas.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.RowHeadersWidth = 51;
             this.dgvVentas.RowTemplate.Height = 24;
@@ -165,7 +158,7 @@
             // 
             this.dtpFechafin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechafin.Location = new System.Drawing.Point(10, 123);
-            this.dtpFechafin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechafin.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechafin.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpFechafin.Name = "dtpFechafin";
             this.dtpFechafin.Size = new System.Drawing.Size(201, 20);
@@ -178,10 +171,10 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(52, 317);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuardar.Location = new System.Drawing.Point(9, 317);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(108, 35);
+            this.btnGuardar.Size = new System.Drawing.Size(92, 34);
             this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Buscar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -237,6 +230,28 @@
             this.label7.Size = new System.Drawing.Size(0, 13);
             this.label7.TabIndex = 15;
             // 
+            // TXT_USUARIO
+            // 
+            this.TXT_USUARIO.Location = new System.Drawing.Point(14, 186);
+            this.TXT_USUARIO.Name = "TXT_USUARIO";
+            this.TXT_USUARIO.Size = new System.Drawing.Size(196, 20);
+            this.TXT_USUARIO.TabIndex = 22;
+            this.TXT_USUARIO.TextChanged += new System.EventHandler(this.TXT_USUARIO_TextChanged);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Chocolate;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(110, 317);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(101, 33);
+            this.btnCancelar.TabIndex = 23;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,7 +261,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
             this.Load += new System.EventHandler(this.FrmVentas_Load_1);
@@ -272,12 +287,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvVentas;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox CBUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vendedor;
         public System.Windows.Forms.DateTimePicker dtpFechafin;
         public System.Windows.Forms.DateTimePicker dtpFechaInicial;
+        private System.Windows.Forms.TextBox TXT_USUARIO;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

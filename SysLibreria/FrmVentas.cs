@@ -27,16 +27,16 @@ namespace SysLibreria
             Formreporte = formReporte;
         }
 
-       
-        
+
+
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-            string usuario = CBUsuario.Text;
+          
             DateTime fInicio = dtpFechaInicial.Value.Date;
             DateTime fFinal = dtpFechafin.Value.Date;
 
-         
+
             dgvVentas.Rows.Clear();
 
             if (fInicio > fFinal)
@@ -47,10 +47,10 @@ namespace SysLibreria
             }
 
             var ventasFiltradas = listaVentas
-                .Where(v => v.Fecha.Date >= fInicio && v.Fecha.Date <= fFinal && v.Usuario.Nombres == usuario)
+                .Where(v => v.Fecha.Date >= fInicio && v.Fecha.Date <= fFinal )
                 .ToList();
 
-       
+
             if (ventasFiltradas.Count == 0)
             {
                 MessageBox.Show("No se encontraron ventas en el rango de fechas seleccionado.",
@@ -58,12 +58,12 @@ namespace SysLibreria
                 return;
             }
 
-         
+
             foreach (var venta in ventasFiltradas)
             {
                 dgvVentas.Rows.Add(
                     venta.IdVenta,
-                    venta.Fecha.ToString("dd/MM/yyyy"),  
+                    venta.Fecha.ToString("dd/MM/yyyy"),
                     venta.Cliente.Nombre,
                     venta.Usuario.Nombres
                 );
@@ -74,7 +74,7 @@ namespace SysLibreria
 
         private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
 
             if (dgvVentas.Rows[e.RowIndex].Selected)
             {
@@ -124,6 +124,44 @@ namespace SysLibreria
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void TXT_USUARIO_TextChanged(object sender, EventArgs e)
+        {
+            dgvVentas.Rows.Clear();
+            if (!string.IsNullOrWhiteSpace(TXT_USUARIO.Text))
+            {
+                foreach (var venta in listaVentas.Where(vn => ($"{vn.Usuario.Nombres}").ToUpper().Trim().Contains(TXT_USUARIO.Text.ToUpper().Trim())))
+                {
+
+
+                    dgvVentas.Rows.Add(
+                        venta.IdVenta,
+                        venta.Fecha.ToString("dd/MM/yyyy"),
+                        venta.Cliente.Nombre,
+                        venta.Usuario.Nombres
+                    );
+
+                }
+            }
+            else
+            {
+                foreach (var venta in listaVentas)
+                {
+                    dgvVentas.Rows.Add(
+                        venta.IdVenta,
+                        venta.Fecha.ToString("dd/MM/yyyy"),
+                        venta.Cliente.Nombre,
+                        venta.Usuario.Nombres
+                    );
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }
