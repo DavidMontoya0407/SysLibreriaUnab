@@ -263,32 +263,40 @@ namespace SysLibreria
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (DGV_PRODUCTO.SelectedRows.Count == 0)
+            try
             {
-                MessageBox.Show("Seleccione un producto para eliminar.");
-                return;
-            }
-
-            var confirmacion = MessageBox.Show("¿Está segura de que desea eliminar este producto?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirmacion != DialogResult.Yes)
-                return;
-
-            int id = Convert.ToInt32(DGV_PRODUCTO.SelectedRows[0].Cells["IdProducto"].Value);
-
-            using (var db = new BDLIBRERIAEntities())
-            {
-                var producto = db.Producto.Find(id);
-                if (producto != null)
+                if (DGV_PRODUCTO.SelectedRows.Count == 0)
                 {
-                    db.Producto.Remove(producto);
-                    db.SaveChanges();
-
-                    MessageBox.Show("Producto eliminado correctamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Seleccione un producto para eliminar.");
+                    return;
                 }
-            }
 
-            LimpiarCampos();
-            CargarProductos();
+                var confirmacion = MessageBox.Show("¿Está segura de que desea eliminar este producto?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmacion != DialogResult.Yes)
+                    return;
+
+                int id = Convert.ToInt32(DGV_PRODUCTO.SelectedRows[0].Cells["IdProducto"].Value);
+
+                using (var db = new BDLIBRERIAEntities())
+                {
+                    var producto = db.Producto.Find(id);
+                    if (producto != null)
+                    {
+                        db.Producto.Remove(producto);
+                        db.SaveChanges();
+
+                        MessageBox.Show("Producto eliminado correctamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+                LimpiarCampos();
+                CargarProductos();
+            }
+            catch(Exception p)
+            {
+                MessageBox.Show("Error al eliminar el producto. Es posible que esté asociado a otras entidades. " , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
